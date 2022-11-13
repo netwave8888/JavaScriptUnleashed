@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    // Declare variable
+
+    var purchaseAmount = prompt("Enter your purchase amount.","");
+
+    if(purchaseAmount)
+    {
+      if(purchaseAmount > 500.00)
+      {
+        document.write("Thank you for your purchase!");
+      }
+      else if(purchaseAmount > 100.00 && purchaseAmount <= 500.00)
+      {
+        document.write("Thank you for your purchase.  Remember if<br>");
+        document.write("you spend over $500.00 you get free shipping!");
+      }
+      else
+      {
+        document.writeln("Thank you, but surely there is something<br>");
+        document.writeln("else you would like to purchase.");
+      }
+    }
+  // -->
+  </script>
+</body>
+</html>

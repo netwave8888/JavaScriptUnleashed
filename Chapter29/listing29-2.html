@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Match Any Whitespace or Non-Whitespace Character</title>
+</head>
+
+<body>
+<h2>Match Any Whitespace or Non-Whitespace Character</h2>
+
+Pattern = \s\S <br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /\s\S/;
+
+//Test for "\ng"
+document.write("Test for String \"\\ng\" returns ");
+document.write(regExpObj.test("\ng"));
+document.write("<br /><br />");
+
+//Test for "g\n"
+document.write("Test for String \"g\\n\" returns ");
+document.write(regExpObj.test("g\n"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

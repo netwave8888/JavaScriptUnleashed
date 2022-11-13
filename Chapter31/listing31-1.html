@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Sound on JS events</title>
+<script type="text/javascript">
+
+function playSound(sfile)
+{
+  //Load a sound and play it
+  window.location.href=sfile;
+}
+</script>
+</head>
+
+<body onLoad="playSound('Type.wav');"
+      onUnLoad="playSound('Glass.wav');">
+<h2>Sounds on JS Events</h2>
+<br />
+<hr />
+The following are examples of JS event handlers used
+to play sounds.
+<hr />
+<a href="#" onclick="playSound('Cashreg.wav');">
+Click here for sound</a>
+<br /><br />
+<form name="form1">
+<input type="button" value="Click Button to play a sound"
+       onclick="playSound('Gunshot.wav');">
+</form>
+</body>
+</html>

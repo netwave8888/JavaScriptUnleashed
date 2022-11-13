@@ -1,0 +1,30 @@
+<html>
+<head><title>Minimum and Maximum Orders</title></head>
+<script type="text/javascript">
+function validateQuantity(quantObj)
+{
+     if (quantObj.value < 100) 
+     {
+          alert("Minimum order is 100 units.");
+          quantObj.focus();
+          quantObj.select();
+     }
+     else if (quantObj.value > 1000) 
+     {
+          alert("Quantities greater than 1000 "
+               + "units require special order.");
+          quantObj.focus();
+          quantObj.select();
+     }
+     return;
+}
+</script>
+<body>
+<h2>Enter number of units:</h2>
+<form action="doSomething.jsp">
+<input type="text" name="quantity" value="100" length="4"
+     maxlength="4" onblur="validateQuantity(this)">
+<input type="submit">
+</form>
+</body>
+</html>

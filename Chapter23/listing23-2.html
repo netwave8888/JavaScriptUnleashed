@@ -1,0 +1,40 @@
+function click()
+{
+   /*
+   * Description: Method of button. Executes command for this button.
+   * Arguments: None.
+   */
+
+   eval(this.command);
+}
+
+function button(name, file, alt, url, spacer, condition, command)
+{
+   /*
+   * Description: button object.
+   * Arguments:
+   *   name - The name used as this button's XHTML element name.
+   *   file - The button image's source url.
+   *   alt  - The alt attribute for the button.
+   *   url - The url which can reference(across frames) the
+   *         buttonSet that holds this button.
+   *   spacer - number of pixels of horizontal spacing used
+   *            after the button being added.
+   *   condition - conditional statement that determines
+   *               whether or not to display this button.
+   *   command - The command to be executed by this button.
+   */
+
+   // Properties
+   this.name = name;
+   this.file = file;
+   this.alt = alt;
+   this.url = url;
+   this.spacer = spacer;
+   this.condition = condition;
+   this.command = command;
+
+   // Methods
+   this.click = click;
+   return this;
+}

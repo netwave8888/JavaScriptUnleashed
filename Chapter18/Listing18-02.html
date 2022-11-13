@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+    function displayHelp() {
+      helpWindow = window.open("help.html", "myHelp",
+                               "toolbar=0,width=300,height=200,resizable=0");
+    }
+  </script>
+</head>
+<body>
+<h1>Customer Information</h1>
+<hr />
+<p>If you would like more information on our great products, please fill out
+the following form. If you need help, please click the following button:
+</p>
+<form action="null">
+  <p>
+    <input type="button" value="Help" onclick="displayHelp()" />
+  </p>
+</form>
+<hr />
+<form action="/cgi-bin/process_customer_info.cgi">
+<table>
+  <tr>
+    <td>First Name:</td>
+    <td><input type="text" size="20" name="FirstName" /></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><input type="text" size="20" name="LastName" /></td>
+  </tr>
+  <tr>
+    <td>Company:</td>
+    <td><input type="text" size="30" name="Company" /></td>
+  </tr>
+  <tr>
+    <td>Title:</td>
+    <td><input type="text" size="30" name="Title" /></td>
+  </tr>
+  <tr>
+    <td>Address:</td>
+    <td><input type="text" size="30" name="Address" /></td>
+  </tr>
+  <tr>
+    <td>City:</td>
+    <td><input type="text" size="30" name="City" /></td>
+  </tr>
+  <tr>
+    <td>State:</td>
+    <td><input type="text" size="2" name="State" /></td>
+  </tr>
+  <tr>
+    <td>Postal Code (Zip):</td>
+    <td><input type="text" size="10" name="Zip" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="submit" value="Submit" /></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

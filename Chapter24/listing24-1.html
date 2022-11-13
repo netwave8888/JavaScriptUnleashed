@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>The Amazing Automated Toaster</title>
+
+<script type="text/javascript">
+function displayHelpBox(text)
+{
+  var theHelpBox = document.getElementById("helpBox");
+  theHelpBox.style.visibility="visible";
+  theHelpBox.firstChild.nodeValue = text;
+}
+function hideHelpBox()
+{
+  document.getElementById("helpBox").style.visibility="hidden"; 
+}
+</script>
+</head>
+
+<body>
+<h2>The Amazing Automated Toaster</h2>
+
+<form action="mailto:your_mail_ID" method="post">
+<table>
+<tr>
+<td nowrap="true">
+
+Bread Product:
+<select name="product"
+        onfocus="displayHelpBox('Select desired bread product from list.')"
+        onblur="hideHelpBox()">
+<option>Bread
+<option>Waffle
+<option>Bagel
+<option>Roll
+<option>Muffin
+<option>Croissant
+<option>Scone
+</select>
+<br />
+
+Quantity:
+<input type="text" name="quantity" value="1" size=4 maxlength=4
+     onfocus="displayHelpBox(
+          'Enter quantity of bread products desired (1-1000).')"
+     onblur="hideHelpBox()">
+<br />
+
+Toastiness:
+<input type="text" name="toastiness" value="50" size="3" maxlength="3"
+     onfocus="displayHelpBox(
+'Enter degree of toastiness from 0-100 (0=untoasted 100=burnt).')"
+     onblur="hideHelpBox('')">
+<br />
+
+Buttered:
+Yes
+<input type="radio" name="buttered" value="yes" checked
+       onclick="displayHelpBox(
+          'Do you want butter on the bread product?')">
+No
+<input type="radio" name="buttered" value="no"
+       onclick="displayHelpBox(
+          'Do you want butter on the bread product?')">
+
+</td>
+<td>
+<div id="helpBox" 
+     style="visibility:hidden; background-color:yellow; height:100; width:100">
+No help is available at this time.
+</div>
+</td>
+</tr>
+</table>
+<hr />
+<input type="submit" value="Start Toaster" onclick="hideHelpBox()">
+<input type="reset" onclick="hideHelpBox()">
+
+</form>
+</body>
+</html>

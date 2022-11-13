@@ -1,0 +1,6 @@
+<job>
+  <script language="JScript">
+    var WshNetwork = WScript.CreateObject("Wscript.Network");
+    WScript.Echo("The User name is: " + WshNetwork.UserName);
+  </script>
+</job>

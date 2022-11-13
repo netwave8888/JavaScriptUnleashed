@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Database Row Creator</title>
+<script type="text/javascript">
+function validateDate(str) 
+{
+  //Date format test 
+  var dateFormat = /^\d{1,2}\/\d{1,2}\/\d{4}/;  
+  if(!dateFormat.test(str))
+  {
+    alert("The date is not in the correct format.");
+    return(false);
+  }
+
+  return(true);
+}
+</script>
+</head>
+
+<body>
+<h1>Database Row Creator</h1>
+
+<form name="newDatabaseRow">
+<table>
+<tr>
+  <td>First Name</td>
+  <td><input type="text" name="firstName"
+             size="16" maxlength="16"></td>
+</tr>
+<tr>
+  <td>Last Name</td>
+  <td><input type="text" name="lastName"
+             size="16" maxlength="16"></td>
+</tr>
+<tr>
+  <td>Birth Date</td>
+  <td><input type="text" name="birthDate"
+             size="16" maxlength="16"></td>
+  <td>( mm/dd/yyyy )</td>
+</tr>
+</table>
+<input type="submit"
+       value="Add"
+       onclick="return(validateDate(document.newDatabaseRow.birthDate.value))">
+</form>
+</body>
+</html>

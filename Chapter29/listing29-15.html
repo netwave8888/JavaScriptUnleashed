@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Match Beginning Of Line</title>
+</head>
+
+<body>
+<h2>Match Beginning Of Line</h2>
+
+Pattern = ^The<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /^The/;
+
+//Test for "The Big House."
+document.write("Test for String \"The Big House.\" returns ");
+document.write(regExpObj.test("The Big House."));
+document.write("<br /><br />");
+
+//Test for "He Lived In The Big House."
+document.write("Test for String \"He Lived In The Big House.\" returns ");
+document.write(regExpObj.test("He Lived In The Big House."));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

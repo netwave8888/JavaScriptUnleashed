@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Navigating Parent Nodes</title>
+<script type"text/javascript">
+
+var currentNode;
+
+//Get the next node in the tree
+function next()
+{
+  //See if current node has a child node first.  If no
+  //child node see if current node has a sibling.
+  if(currentNode.firstChild)
+  {
+     currentNode=currentNode.firstChild;
+  }
+  else if(currentNode.nextSibling)
+  {
+    currentNode=currentNode.nextSibling;
+  }
+  else if(currentNode.parentNode)
+  {
+    //If no child or sibling node then go back up the
+    //tree until a sibling node is found or top of 
+    //tree is reached
+    while(currentNode.parentNode)
+    {
+      currentNode=currentNode.parentNode;
+      if(currentNode.nextSibling)
+      {
+        currentNode = currentNode.nextSibling;
+        break;
+      }
+    }
+
+    if(currentNode==bodyNode)
+    {
+      alert("You have reached the top of the tree!");
+    }
+  }
+  displayNode(); //Display information about current node
+}
+
+//Display the tag name and type and any text that it contains
+function displayNode()
+{
+  document.displayForm.NameTextBox.value=currentNode.nodeName;
+  document.displayForm.TypeTextBox.value=currentNode.nodeType;
+  document.displayForm.TextTextBox.value=currentNode.nodeValue;
+}
+</script>
+</head>
+
+
+<body id="bodyNode">
+<h1>Navigating Parent Nodes</h1>
+
+This example demonstrates how to navigate parent nodes using JavaScript.
+
+<form name="displayForm">
+Name: <input type="text" name="NameTextBox"><br>
+Type: <input type="text" name="TypeTextBox"><br>
+Text: <input type="text" name="TextTextBox"><br>
+<input type="button" value="NEXT" onclick="next()">
+
+</form>
+
+<script type="text/javascript">
+//Set current node to the body node and display the nodes attributes
+currentNode = document.getElementById("bodyNode");
+displayNode();
+</script>
+
+</body>
+</html>

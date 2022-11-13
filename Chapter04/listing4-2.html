@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Car Specification</title>
+
+<script type="text/javascript" language="JavaScript">
+//Initialize global variables
+var color = "green";
+var numDoors= 4;
+
+//Declare a car specification function
+function carSpecs()
+{
+  //Declare and set variables inside function
+  color = "red";
+  price = "$25,000";
+  var numDoors = 2;
+  document.write("The ",numDoors," door ",color);
+  document.write(" car is ",price);
+}
+
+</script>
+</head>
+
+<body>
+<h2><u>Car Specifications</u></h2>
+<script type="text/javascript" language="JavaScript">
+
+//Display results of carSpecs() function
+carSpecs();
+
+//Display variable values outside of function
+document.write("<br>The ",numDoors," door ",color);
+document.write(" car is ",price);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <style type="text/css">
+  <!--
+    #layer1{
+    background-color: green;
+    height: 100px;
+    left: 10px;
+    position: absolute;
+    top: 50px;
+    width: 100px;
+    }
+  -->
+  </style>
+  <script type="text/javascript">
+    // Take the state passed in, and change it.
+    function changeState(layerRef, state){
+      var blockElement = document.getElementById(layerRef);
+      blockElement.style.visibility = state;
+    }
+  </script>
+</head>
+<body>
+  <div id="layer1">
+    DIV 1
+  </div>
+  <form action="null">
+    <input type="button" value="Hide"
+           onclick="changeState('layer1','hidden')" />
+    <input type="button" value="Show"
+           onclick="changeState('layer1','visible')" />
+  </form>
+</body>
+</html>

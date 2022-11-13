@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <title>My First JavaScript Script</title>
+  <script type="text/javascript" language="JavaScript">
+  <!--
+    function passCheck(){
+      if(prompt("Please enter your password","") == "letmein"){
+        window.location = "/secure.html";
+      }else{
+        window.location = "/error.html";
+      }
+    }
+  //-->
+  </script>
+</head>
+<body onload="passCheck()">
+  <noscript>
+    <p>
+      <b>
+      Sorry, but your browser either does not support JavaScript or you
+      have it turned off. For information on JavaScript supporting browsers
+      or how to turn it back on, please see the website of your browser's
+      creator.
+      </b>
+    </p>
+  </noscript>
+</body>
+</html>

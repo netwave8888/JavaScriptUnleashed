@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>Using the book object</title>
+  <script type="text/javascript">
+
+  function employee(FirstName, LastName, HomePhone, Ext, EmailAddress, project) 
+  {
+    this.FirstName = FirstName;
+    this.LastName = LastName;
+    this.HomePhone = HomePhone;
+    this.Ext = Ext;
+    this.EmailAddress = EmailAddress;
+    this.Project = project;
+    this.showSummaryInfo = summaryInfo;
+  }
+
+  function summaryInfo() 
+  {
+    objWindow = window.open("", "", "width=600,height=400");
+    objWindow.document.write("<html><body>");
+    objWindow.document.write("<h1>Employee Summary Information Sheet<\/h1>");
+    objWindow.document.write("<h2>" + this.FirstName);
+    objWindow.document.write(" " + this.LastName + "<\/h2>");
+
+    objWindow.document.write("<h3>Contact Information<\/h3>");
+    objWindow.document.write("Home Phone: " + this.HomePhone + "<br \/>");
+    objWindow.document.write("Ext.: " + this.Ext + "<br \/>");
+    objWindow.document.write("Email: " + this.EmailAddress + "<br \/>");
+
+    objWindow.document.write("<h3>Project Information<\/h3>");
+    objWindow.document.write("Current Project: ");
+    objWindow.document.write(this.Project.ProjectName + "<br \/>");
+    objWindow.document.write("Client: ");
+    objWindow.document.write(this.Project.Client.ClientName + "<br \/>");
+    objWindow.document.write("Client: ");
+    objWindow.document.write(this.Project.Client.Address + "<br \/>");
+    objWindow.document.write("Client: ");
+    objWindow.document.write(this.Project.Client.City + ", ");
+    objWindow.document.write(this.Project.Client.State + " ");
+    objWindow.document.write(this.Project.Client.Zip + "<br \/>");
+    objWindow.document.write("Developmnt Tool Used: ");
+    objWindow.document.write(this.Project.DevTool + "<br \/>");
+    objWindow.document.write("<\/body><\/html>");
+    objWindow.document.close();
+  }
+
+  function project(ProjectName, client, DevTool) 
+  {
+    this.ProjectName = ProjectName;
+    this.Client = client;
+    this.DevTool = DevTool;
+  }
+
+  function client(ClientName, Address, City, State, Zip) 
+  {
+    this.ClientName = ClientName;
+    this.Address = Address;
+    this.City = City;
+    this.State = State;
+    this.Zip = Zip;
+  }
+
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  CoastTech = new client("Coastal Technology", "100 Beacon Hill", 
+                         "Boston", "MA", "01220");
+  Coastal = new project("Coastal01", CoastTech, "JavaScript");
+  Allen = new employee("Allen", "Wyke", "617/555-1212", "100",
+                       "allen@anywhere.com", Coastal);
+  Allen.showSummaryInfo();
+  </script>
+</body>
+</html>

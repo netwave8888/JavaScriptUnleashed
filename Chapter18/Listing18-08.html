@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  function dailyTask(){
+    var tdy = new Date();
+    if((tdy.getHours() == 8) && (tdy.getMinutes() == 30)){
+      alert('Good morning sunshine!');
+      clearInterval(timerID);
+    }
+  }
+
+  timerID = setInterval('dailyTask()', 10000)
+  </script>
+</head>
+<body>
+<p>
+Task Reminder
+</p>
+</body>
+</html>

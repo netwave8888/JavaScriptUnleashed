@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    var choice = "A"
+
+    function optionA(){
+      alert("Option A");
+    }
+
+    function optionB(){
+      alert("Option B");
+    }
+  </script>
+</head>
+<body>
+<form action="null" name="myForm">
+  <input type="button" name="myButton" value="Click Here"
+         onclick="optionA()" />
+</form>
+
+<script type="text/javascript">
+  if (choice == "A"){
+    document.myForm.myButton.onclick = optionB;
+  }
+</script>
+</body>
+</html>

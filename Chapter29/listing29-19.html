@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Phone Number Validation</title>
+<script type="text/javascript">
+function validatePhone(areaCode,prefix,extension)
+{
+  //Assemble phone number
+  var phoneNum = new String(areaCode + "-" + prefix + "-" + extension);
+
+  //Create a regular expression pattern that searches for
+  //phone numbers with an area code of: 828, 252, 704,919, 910, or 336
+  var regExpObj = /(828|252|704|919|910|336)-\d\d\d-\d\d\d\d/;
+
+  if(regExpObj.exec(phoneNum) == null)
+  {
+    alert(phoneNum + " does not contain a valid North Carolina area code!");
+  }
+  else
+  {
+    alert("Thank you for your order!");
+  }
+}
+</script>
+</head>
+
+<body style="text-align:center">
+<h1>NC Sales Company</h1>
+
+Thanks for your order.  Please provide us with your North
+Carolina phone number so we can contact you if there are
+any problems shipping your order.
+
+<form name="form1">
+Phone Number: <input type="text"
+                     size="3"
+                     maxlength="3"
+                     name="area">-
+              <input type="text"
+                     size="3"
+                     maxlength="3"
+                     name="prefix">-
+              <input type="text"
+                     size="4"
+                     maxlength="4"
+                     name="extension">
+<br /><br />
+<input type="button"
+       value="Submit"
+       onClick="validatePhone(area.value,
+                              prefix.value,
+                              extension.value)">
+</form>
+</body>
+</html>

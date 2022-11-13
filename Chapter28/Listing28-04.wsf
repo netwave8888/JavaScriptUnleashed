@@ -1,0 +1,22 @@
+<job>
+  <script language="JScript">
+
+    // Create Arguments object.
+    WshArgObj = WScript.Arguments;
+
+    // Read in the username and password.
+    var userName = WshArgObj.Item(0);
+    var passwd = WshArgObj.Item(1);
+
+    // Create a new Network object and add printer.
+    var WshNetwork = WScript.CreateObject("WScript.Network");
+
+    // contains the network path to the printer
+    var printer = "\\PFS01\HPLaserJ2";
+
+    var localName = "myNewPrinter";
+
+    WshNetwork.AddPrinterConnection(localName, printer, userName, passwd);
+
+  </script>
+</job>

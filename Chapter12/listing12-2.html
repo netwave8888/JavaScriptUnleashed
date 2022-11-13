@@ -1,0 +1,40 @@
+<html>
+<html>
+<head>
+<title>Online Registration</title>
+<script type="text/javascript"language="JavaScript">
+     function checkFields() {
+          var num = document.form1.elements.length;
+          var validFlag = true;
+          for (var i=0; i<num; i++) 
+          {
+               if (document.form1.elements[i].value == "" &&
+                   document.form1.elements[i] == 'text')
+               {
+                    validFlag = false;
+                    alert("The " + document.form1.elements[i].name +
+                         " field is blank. Please enter a value.");
+                    break; 
+               }
+          }
+          return validFlag;
+     }
+</script>
+</head>
+
+<body>
+<form name="form1" method="POST" onSubmit="return checkFields()">
+<h2>Online Registration</h2>
+Username:<br />
+<input type="text" size="25" maxlength="256" name="Username"><br />
+Category of Interest:<br>
+<input type="text" size="25" maxlength="256" name="Category"><br />
+Starting Year:<br />
+<input type="text" size="25" maxlength="256" name="StartYear"><br />
+Email address:<br />
+<input type="text" size="25" maxlength="256" name="EmailAddress"></p>
+<br /><br />
+<input type="submit" value="Register"><input type="reset" value="Clear">
+</form>
+</body>
+</html>

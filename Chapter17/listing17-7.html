@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>Sorting Table Example</title>
+<script type="text/javascript">
+function addNewRow(where)
+{
+  //Get new row data.
+  var newFirstName = document.getElementById("newFirstName").getAttribute("value");
+  var newLastName = document.getElementById("newLastName").getAttribute("value");
+  var newAge = document.getElementById("newAge").getAttribute("value");
+  
+  //Create new table row elements.
+  var newTR = document.createElement("tr");
+  var newTD1 = document.createElement("td");
+  var newTD2 = document.createElement("td");
+  var newTD3 = document.createElement("td");
+  var newText1 = document.createTextNode(newFirstName);
+  var newText2 = document.createTextNode(newLastName);
+  var newText3 = document.createTextNode(newAge);
+  
+  //Connect the new row elements.
+  newTD1.appendChild(newText1);
+  newTD2.appendChild(newText2);
+  newTD3.appendChild(newText3);
+  newTR.appendChild(newTD1);
+  newTR.appendChild(newTD2);
+  newTR.appendChild(newTD3);
+  
+  //Get tbody element of dbRowsTable.
+  var tbody = document.getElementById("dbRowsTable").firstChild;
+
+  //If row already exists then replace it otherwise insert it into table.
+  var existingTR = getExistingRow(tbody,newFirstName,newLastName);
+  if(existingTR != null)
+  {
+    tbody.replaceChild(newTR,existingTR);
+  }
+  else
+  {
+    //Insert new row into the dbRowTable where user specified.
+    if(where == "top")
+    {
+      //Insert new row before the first data row.
+      //Must skip over the header row.
+      tbody.insertBefore(newTR,tbody.firstChild.nextSibling);
+    }
+    else
+    {
+      //Insert new row at end of list.
+      tbody.appendChild(newTR);
+    }
+  }
+}
+
+//Find row with same first name and last name.
+function getExistingRow(tbody,firstName,lastName)
+{
+  var row = tbody.firstChild //Skip header row
+  
+  //Loop through rows in oldTable.
+  while(row.nextSibling)
+  { 
+    row = row.nextSibling;
+    if(firstName == row.childNodes[0].firstChild.nodeValue &&
+       lastName == row.childNodes[1].firstChild.nodeValue)
+    {
+      return(row);
+    }
+  }
+  return(null);
+}
+
+
+function sortTable(columnId,sortOrder)
+{
+  //Get column position.
+  var colPosition = 0;
+  var tempNode = document.getElementById(columnId).previousSibling;
+  while(tempNode)
+  {
+    colPosition++;
+    tempNode = tempNode.previousSibling;
+  }
+
+  //Set sort order.
+  if(sortOrder != "descending")
+  {
+    sortOrder = "ascending";
+  }
+	
+  //td -> tr -> tbody.
+  var oldTableBody = document.getElementById(columnId).parentNode.parentNode;
+  var newTableBody = oldTableBody.cloneNode();
+  
+  //Only sort table if there are 2 or more rows (plus the header row).
+  if(oldTableBody.childNodes.length<=2)
+  {
+    return;
+  }
+	
+  //Deep copy the header row.
+  var headerRow = oldTableBody.firstChild;
+	
+  //Seed the newTableBody with the first data rows from oldTableBody.
+  var oldRow = headerRow.nextSibling;
+  newTableBody.appendChild(oldRow.cloneNode(true));
+  oldRow = oldRow.nextSibling;
+
+  //Loop through rows in oldTable.
+  while(oldRow)
+  {
+    var addedRowFlag = false;
+    var curNewRow = newTableBody.firstChild;
+
+    //Loop through rows in new table.
+    while(!addedRowFlag && curNewRow)
+    {
+      var curNewRowValue = curNewRow.childNodes[colPosition].firstChild.nodeValue;
+      var oldRowValue = oldRow.childNodes[colPosition].firstChild.nodeValue;
+
+      //If ascending and old row value is greater than or equal to new row
+      //value then move to next item and compare.  If descending and old row 
+      //value is less than or equal to new row value then move to next item
+      //and compare. If neither of these cases are true then the item should
+      //be inserted before the current new row. This will allow the table to
+      //be sorted indirectly by multiple rows.
+      if((sortOrder=="ascending" && 
+          greaterThanOrEqual(oldRowValue,curNewRowValue)) ||
+          (sortOrder=="descending" && 
+          lessThanOrEqual(oldRowValue,curNewRowValue)))
+      {
+        curNewRow = curNewRow.nextSibling;
+      }
+      else
+      {
+        newTableBody.insertBefore(oldRow.cloneNode(true),curNewRow);
+
+        //Break out of loop and get next row in old table.
+        addedRowFlag = true;
+      }
+    }
+
+    //If no match was found above then item 
+    //should be added to bottom of list.
+    if(!addedRowFlag)
+    {
+      newTableBody.appendChild(oldRow.cloneNode(true));
+    }
+
+    oldRow = oldRow.nextSibling;
+  }
+	
+  //Add header row to top of newTableBody.
+  newTableBody.insertBefore(headerRow.cloneNode(true),newTableBody.firstChild);
+  
+  //Replace the old <tbody> with the new <tbody>.
+  var oldTable = oldTableBody.parentNode;
+  oldTable.replaceChild(newTableBody,oldTableBody);
+}
+
+function greaterThanOrEqual(left, right)
+{
+  return(left>=right);
+}
+
+function lessThanOrEqual(left, right)
+{
+  return(left<=right);
+}
+
+</script>
+</head>
+<body>
+<h1>User Database Table</h1>
+
+Add a new row:
+<table>
+  <tr><td>First Name:</td><td><input type="text" name="newFirstName"></td></tr>
+  <tr><td>Last Name:</td><td><input type="text" name="newLastName"></td></tr>
+  <tr><td>Age:</td><td><input type="text" name="newAge"></td></tr>
+</table>
+<button onclick="addNewRow('top')">Add To Top</button>
+<button onclick="addNewRow('bottom')">Add To Bottom</button>
+
+<br /><hr /><br />
+
+<table id="dbRowsTable" border="1">
+<tr>
+  <th id="tableColumn1">FIRST NAME
+    <img src="ascending.gif" 
+         alt="Sort Ascending"
+         onclick="sortTable('tableColumn1','ascending')">
+    <img src="descending.gif" 
+         alt="Sort Descending"
+         onclick="sortTable('tableColumn1','descending')">	
+  </th>
+  <th id="tableColumn2">LAST NAME
+    <img src="ascending.gif" 
+         alt="Sort Ascending"
+         onclick="sortTable('tableColumn2','ascending')">
+    <img src="descending.gif" 
+         alt="Sort Descending"
+         onclick="sortTable('tableColumn2','descending')">	
+  </th>	
+  <th id="tableColumn3">AGE
+    <img src="ascending.gif" 
+         alt="Sort Ascending"
+         onclick="sortTable('tableColumn3','ascending')">
+    <img src="descending.gif" 
+         alt="Sort Descending"
+         onclick="sortTable('tableColumn3','descending')">	
+  </th>
+</tr>
+</table>
+
+</body>
+</html>

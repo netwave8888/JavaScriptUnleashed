@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Online Registration</title>
+</head>
+<body>
+<script type="text/javascript" language="JavaScript">
+var browserVar = navigator.appName;
+document.write('<form name="form1" method="POST">');
+document.write('<h2>Online Registration</h2>');
+document.write('Username:<br>');
+document.write('<input type=text size=25 maxlength=256 name="Username"><br>');
+document.write('Browser used:<br>');
+document.write('<input type=text size=25 maxlength=256 name="Browser" value="' + browserVar + '"><br>');
+document.write('Email address:<br>');
+document.write('<input type=text size=25 maxlength=256');
+document.write('name="EmailAddress"><br><br>');
+document.write('<input type=submit value="Register">  ');
+document.write('<input type=reset value="Clear">');
+document.write('</form>');
+</script>
+</body>
+</html>

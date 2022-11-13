@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+    // Declare variables
+    var scrollRate = 100;
+    var scrollChars = 1;
+    var marqueeMessage = new String();
+
+    function JSMarquee(){
+      setTimeout('JSMarquee()', scrollRate);
+      marqueeMessage = document.marqueeForm.marqueeText.value;
+      document.marqueeForm.marqueeText.value =
+                       marqueeMessage.substring( scrollChars ) +
+                       marqueeMessage.substring( 0, scrollChars );
+  }
+
+  </script>
+</head>
+<body onload="JSMarquee()">
+<form name="marqueeForm" action="null">
+  <input name="marqueeText" size="50" value="THIS JUST IN...JavaScript is selected as official scripting language of the   2004 Summer Olympics " />
+</form>
+</body>
+</html>

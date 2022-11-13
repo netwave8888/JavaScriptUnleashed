@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Match Grouping</title>
+</head>
+
+<body>
+<h2>Match Grouping</h2>
+
+Pattern = f(a|o)r<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /f(a|o)r/;
+
+//Test for "far"
+document.write("Test for String \"far\" returns ");
+document.write(regExpObj.test("far"));
+document.write("<br /><br />");
+
+//Test for "for"
+document.write("Test for String \"for\" returns ");
+document.write(regExpObj.test("for"));
+document.write("<br /><br />");
+
+//Test for "fmt"
+document.write("Test for String \"fmt\" returns ");
+document.write(regExpObj.test("fmt"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

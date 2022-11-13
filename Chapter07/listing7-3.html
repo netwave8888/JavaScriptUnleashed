@@ -1,0 +1,82 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!--
+    //This function determines if the string represents a valid phone number
+    function isPhone(aString) 
+    {
+      var aChar = null;
+      var status = true;
+
+      //A valid phone number with dashes is 12 characters long
+      if(aString.length != 13) 
+      {
+        status = false;
+      }
+      else
+      {
+        //Loop through all the characters in the phone number string
+        for(var i = 0; i <= 12; i++) 
+        {
+          aChar = aString.charAt(i);
+          //Check for parentheses around area code
+          if ( i == 0 && aChar == "(" )
+          {
+            continue;
+          }
+          else
+          {
+            if( i == 4 && aChar == ")" )
+            {
+              continue;
+            }
+            else
+            {
+              //Check for a dash between phone number
+              if( i == 8 && aChar == "-" )
+              {
+                continue;
+              }
+              else
+              {
+                //Make sure that only numbers were specified in the string
+                if( parseInt(aChar,10) >= 0 && parseInt(aChar,10) <= 9 )
+                {
+                  continue;
+                }
+                else 
+                {
+                  status = false;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+      return(status);
+    }
+  // -->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    var userInput = "(800)555-1212";
+    if(isPhone(userInput)) 
+    {
+      document.writeln("Thank you for your phone number.");
+      document.writeln("I will have a representative get you");
+      document.writeln("more information.");
+    }
+    else
+    {
+      document.writeln("Please re-enter your phone number");
+      document.writeln("using the format (###)###-####");
+    }
+  //-->
+  </script>
+
+</body>
+</html>

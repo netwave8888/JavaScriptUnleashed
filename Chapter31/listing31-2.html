@@ -1,0 +1,31 @@
+<html>
+<body>
+
+<script type="text/javascript">
+
+//Create two global variables used to describe the vehicles
+var vehicleColor;
+var vehicleType;
+
+//Set the type of vehicle
+function setType()
+{
+  return(vehicleType="truck");
+}
+
+//Set the color of the vehicle
+function setColor()
+{
+  return(vehicleColor="blue");
+}
+
+//If the vehicle type and color were not properly set, alert the user.
+if(setType() || setColor())
+  document.write("The " + vehicleType + " is " + vehicleColor);
+else
+  alert("The vehicle type and color could not be set");
+
+</script>
+
+</body>
+</html>

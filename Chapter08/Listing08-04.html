@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    function showWindow() {
+
+      // Declare your variables
+      var txt = document.form1.stringField.value;
+      var clr = "";
+      var sze = "";
+
+      // Check to see what options are selected
+      if (document.form1.bigBox.checked) txt = txt.big();
+      if (document.form1.boldBox.checked) txt = txt.bold();
+      if (document.form1.fixedBox.checked) txt = txt.fixed();
+      if (document.form1.italicsBox.checked) txt = txt.italics();
+      if (document.form1.smallBox.checked) txt = txt.small();
+      if (document.form1.strikeBox.checked) txt = txt.strike();
+      if (document.form1.subBox.checked) txt = txt.sub();
+      if (document.form1.supBox.checked) txt = txt.sup();
+
+      // Special checking for select box
+      clr = document.form1.colorList.options[document.form1.colorList.options.selectedIndex].text;
+      txt = txt.fontcolor(clr);
+      sze = document.form1.sizeList.options[document.form1.sizeList.options.selectedIndex].text;
+      txt = txt.fontsize(sze);
+
+      // Open a new window to write the results to
+      objWindow = window.open("", "","width=600,height=300");
+      objWindow.document.write(txt);
+      objWindow.document.close();
+  }
+  </script>
+</head>
+<body>
+  <h1>
+    String Object Formatting
+  </h1>
+  <hr />
+  <form method="post" name="form1" action="null">
+    <p>
+      <strong>
+        String:
+      </strong>
+      <input type="text" size="40" maxlength="256" name="stringField" />
+    </p>
+    <p>
+      <strong>
+        Style:
+      </strong>
+      <input type="checkbox" name="bigBox" value="ON" />
+      Big
+      <input type="checkbox" name="boldBox" value="ON" />
+      Bold
+      <input type="checkbox" name="fixedBox" value="ON" />
+      Fixed
+      <input type="checkbox" name="italicsBox" value="ON" />
+      Italics
+      <input type="checkbox" name="smallBox" value="ON" />
+      Small
+      <input type="checkbox" name="strikeBox" value="ON" />
+      Strike
+      <input type="checkbox" name="subBox" value="ON" />
+      Sub
+      <input type="checkbox" name="supBox" value="ON" />
+      Sup
+    </p>
+    <p>
+      <strong>
+        Font:
+      </strong>
+      Color:
+      <select name="colorList" size="1">
+        <option selected="selected">black</option>
+        <option>green</option>
+        <option>red</option>
+      </select>
+      Size:
+      <select name="sizeList" size="1">
+        <option selected="selected">1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+      </select>
+    </p>
+    <input type="button" name="Show" value="Show" onclick="showWindow()" />
+  </form>
+</body>
+</html>

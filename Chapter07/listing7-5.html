@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!--
+    // Use this syntax for welcomeMessage function:
+    // welcomeMessage([userName] [,extraMessage1] [,extraMessage2]...)
+    function welcomeMessage(userName) 
+    {
+      if (userName != null) 
+      {
+        document.writeln("\"Hello again, " + userName + ".\"");
+      }
+      else
+      {
+        document.writeln("\"Welcome to our Web site!\"");
+      }
+      var numArgs = arguments.length;
+      // If more arguments than the userName were sent,
+      // display each one.
+      if(numArgs > 1) 
+      {
+        for(var i = 1; i < numArgs; i++) 
+        {
+          document.writeln("\""+arguments[i]+"\"");
+        }
+      }
+    }
+  // -->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    var userName = "David", extraMsg = "It has been a long time!";
+    var userName2 = null;
+    var extraMsg1 = "Would you like to become a member?";
+    var extraMsg2 = "You can enroll online!";
+    welcomeMessage(userName, extraMsg);
+    document.writeln("<hr>");
+    welcomeMessage(userName2, extraMsg1, extraMsg2);
+  // -->
+  </script>
+</body>
+</html>
+
+

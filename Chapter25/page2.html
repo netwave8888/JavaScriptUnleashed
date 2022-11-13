@@ -1,0 +1,33 @@
+<html>
+<title>Where Was I? - Page 2</title>
+<head>
+</head>
+<body>
+<h1>Where Was I? - Demontration</h1>
+This page reads information which allows it to figure out where it came from.
+<p>
+<script type="text/javascript">
+// WhereWasI
+// Reads the search string to figure out what link brought it here
+function WhereWasI() {
+  // Start by storing our search string in a handy place (so we don't
+  // need to type as much)
+  var handyString = window.location.search;
+  // Find the beginning of our special URL variable
+  var startOfSource = handyString.indexOf("camefrom=");
+  // If it's there, find the end of it
+  if (startOfSource != -1) {
+    var endOfSource = handyString.indexOf("&", startOfSource+9);
+    var result = handyString.substring(startOfSource+9, endOfSource);
+  }
+  else
+    var result = "Source Unknown"; // Could not find the "camefrom" string
+  return result;
+}
+if (WhereWasI() != "Source Unknown")
+  document.write ("You just came from <b>" + WhereWasI() + "<\/b>.<br />")
+else
+  document.write ("Unfortunately, we don't know where you came from.<br />");
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head>
+<script type="text/javascript" language="JavaScript">
+
+function moveon() {
+  var urlAddress = ""
+  urlAddress = document.forms[0].newURL.value
+  if(urlAddress != "")
+    window.location = urlAddress
+}
+
+</script>
+</head>
+<body>
+<form>
+Please enter URL:<input type="text" name="newURL">
+<input type="button" value="move" onClick="moveon()">
+</form>
+</body>
+</html>

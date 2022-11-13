@@ -1,0 +1,91 @@
+<html>
+<head>
+  <title>Color Definition</title>
+  <script type="text/javascript" language="JavaScript">
+
+    //Change the color of attribute specified
+    function ChangeColor() {
+      var newColor = document.form1.colorList.options[document.form1.colorList.selectedIndex].text;
+
+      if(document.form1.type[0].checked)
+      {
+        document.bgColor = newColor;
+      }
+      else if(document.form1.type[1].checked)
+      {
+        document.fgColor = newColor;
+      }
+      else if(document.form1.type[2].checked)
+      {
+        document.alinkColor = newColor;
+      }
+      else if(document.form1.type[3].checked)
+      {
+        document.linkColor = newColor;
+      }
+      else if(document.form1.type[4].checked)
+      {
+        document.vlinkColor = newColor;
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  A link to <a href="http://www.microsoft.com">Microsoft's</a> web site.<hr>
+
+  <form name="form1">
+      Select Color:
+      <select name="colorList" size="1">
+        <option>black</option>
+        <option>blue</option>
+        <option>brown</option>
+        <option>cyan</option>
+        <option>gold</option>
+        <option>gray</option>
+        <option>green</option>
+        <option>indigo</option>
+        <option>lavender</option>
+        <option>lime</option>
+        <option>maroon</option>
+        <option>navy</option>
+        <option>olive</option>
+        <option>orange</option>
+        <option>pink</option>
+        <option>purple</option>
+        <option>red</option>
+        <option>royalblue</option>
+        <option>silver</option>
+        <option>slategray</option>
+        <option>tan</option>
+        <option>teal</option>
+        <option>turquoise</option>
+        <option>violet</option>
+        <option>white</option>
+        <option>yellow</option>
+      </select>
+      <br>
+      <input type="radio" 
+             name="type" 
+             value="bgColor" 
+             checked>Background</input><br>
+      <input type="radio" 
+             name="type" 
+             value="fgColor">Foreground</input><br>
+      <input type="radio" 
+             name="type" 
+             value="alinkColor">Activated Link</input><br>
+      <input type="radio" 
+             name="type" 
+             value="linkColor">Unvisited Link</input><br>
+      <input type="radio" 
+             name="type" 
+             value="vlinkColor">Visited Link</input><br>
+      <input type="button" 
+             name="Apply" 
+             value="Apply"
+             onclick="ChangeColor()">
+  </form>
+</body>
+</html>

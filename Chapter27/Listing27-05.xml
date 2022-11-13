@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <book>
+      <details>
+        <title>JavaScript Unleashed</title>
+        <edition>4th</edition>
+        <publisher>Sams</publisher>
+        <authorList>
+          <author>R. Allen Wyke</author>
+          <author>Jason D. Gilliam</author>
+        </authorList>
+      </details>
+      <available>2002</available>
+    </book>
+  </soap:Body>
+</soap:Envelope>

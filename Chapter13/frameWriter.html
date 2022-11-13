@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Updating Demo frame1</title>
+<script type="text/javascript" language="JavaScript">
+<!--
+function docWrite(){
+    top.frame2.document.open();
+    top.frame2.document.write("<html><head>" +
+        "<title>Updating Demo frame2<\/title>");
+    top.frame2.document.write(" <\/head><body bgcolor=\"" +
+                     document.form1.bginput.value + "\">");
+   top.frame2.document.write("<h1>Updated Page<\/h1>");
+   top.frame2.document.write("Update by " + document.form1.input1.value);
+   top.frame2.document.write("<\/body><\/html>");
+   top.frame2.document.close();
+  }
+// -->
+</script>
+
+</head>
+<body>
+<form name="form1">
+<input type="text" name="input1">
+<p>
+Select a Background Color<br />
+<input type="radio" name="radio1" value="white" checked
+    onClick='document.form1.bginput.value="white"'>White</br />
+<input type="radio" name="radio1" value="red"
+    onClick='document.form1.bginput.value="red"'>Red<br />
+<input type="radio" name="radio1" value="blue"
+    onClick='document.form1.bginput.value="blue"'>Blue<br />
+<input type="radio" name="radio1" value="green"
+    onClick='document.form1.bginput.value="green"'>Green<br />
+<p><input type="hidden" name="bginput" value="white"></p>
+<p><input type="button" value="Update frame2" onClick="docWrite()"></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head><title>Accessing Attributes of an Element</title></head>
+<body>
+
+<table>
+  <tr>
+    <td>First Name</td>
+    <td><input type="text" name="firstName" ></td>
+  </tr>
+  <tr>
+    <td>Middle Name</td>
+    <td><input type="text" name="middleName"></td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td><input type="text" name="lastName"></td>
+  </tr>
+</table>
+
+<h2>All Attributes of the firstname Input Tags</h2>
+<table border="1">
+<tr><th>NAME</th><th>VALUE</th></tr>
+<script type="text/javascript">
+
+  //Access all the attributes of the firstName input tag
+  var theElement = document.getElementById("firstName");
+  var nodeMap = theElement.attributes
+
+  for(var i=0; i<nodeMap.length; i++)
+  {
+    var aAttr = nodeMap.item(i);
+    document.write("<tr><td>" + aAttr.name + "<\/td><td>" + 
+                   aAttr.value + "<\/td><\/tr>");
+  }
+
+</script>
+</table>
+</body>
+</html>

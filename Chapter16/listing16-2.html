@@ -1,0 +1,26 @@
+<html>
+<head><title>Accessing Nodes and Elements</title></head>
+<body>
+
+<p id="pTag">This is text in a paragraph tag</p>
+
+<script type="text/javascript">
+  //Access the pTag element
+  var pTagNode = document.getElementById("pTag");
+  document.write("<h2>P Tag Node<\/h2>");
+  document.write("Tag Name: " + pTagNode.tagName + "<br \/>");
+  document.write("Node Name: " + pTagNode.nodeName + "<br \/>");
+  document.write("Node Value: " + pTagNode.nodeValue + "<br \/>");
+  document.write("Node Type: " + pTagNode.nodeType + "<br \/>");
+
+  //Access the text of the pTag node
+  var pTagTextNode = pTagNode.firstChild;
+  document.write("<h2>P Tag Text Node<\/h2>");
+  document.write("Tag Name: " + pTagTextNode.tagName + "<br \/>");
+  document.write("Node Name: " + pTagTextNode.nodeName + "<br \/>");
+  document.write("Node Value: " + pTagTextNode.nodeValue + "<br \/>");
+  document.write("Node Type: " + pTagNode.nodeType + "<br \/>");
+</script>
+
+</body>
+</html>

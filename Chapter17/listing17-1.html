@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Deleting Nodes</title>
+
+<script type="text/javascript">
+function removeItems()
+{
+  var cart = document.cart;
+	
+  //Loop through all items in the shopping cart.
+  for(var i=0; i<cart.length; i++)
+  {
+    //If item is checked then remove it.
+    if(cart.elements[i].checked)
+    {
+      //Since element is in a <tr> get the tr and tbody node.
+      var inputTag = document.getElementById(cart.elements[i].id);
+      var tr = inputTag.parentNode.parentNode;
+      var tbody = tr.parentNode;
+
+      //Remove the table record node and everything under it.
+      tbody.removeChild(tr);
+    }
+  }
+}
+</script>
+
+
+</head>
+<body>
+<h2>Music Store Shopping Cart</h2>
+
+<form name="cart" id="cart" action="checkout.jsp">
+<table border="1">
+  <tr><th>Select</th><th>Description</th><th>Price</th></tr>
+  <tr>
+    <td><input type="checkbox" name="item_456" id="item_456"></td>
+    <td>1 pair Pro-Mark 5B drum sticks.</td>
+    <td>6.99</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="item_005" id="item_005"></td>
+    <td>Remo Pre-Pack Pinstrip Drum Heads.</td>
+    <td>39.99</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="item_769" id="item_769"></td>
+    <td>Beato II Club Drum Set Bag Set</td>
+    <td>149.99</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="item_142" id="item_142"></td>
+    <td>Seiko SQ-50 Quartz Metronome</td>
+    <td>24.99</td>
+  </tr>
+</table>
+
+<br />
+<button onclick="removeItems()">Remove Selected Items</button>
+<input type="submit" value="Proceed to checkout">
+</form>
+
+</body>
+</html>

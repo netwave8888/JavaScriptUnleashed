@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Match Position Between Word And Non-Word Character</title>
+</head>
+
+<body>
+<h2>Match Position Between Word And Non-Word Character</h2>
+
+Pattern = cat\b <br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /cat\b/;
+
+//Test for "The cat is sleepy"
+document.write("Test for String \"The cat is sleepy\" returns ");
+document.write(regExpObj.test("The cat is sleepy"));
+document.write("<br /><br />");
+
+//Test for "Please catch the bus"
+document.write("Test for String \"Please catch the bus\" returns ");
+document.write(regExpObj.test("Please catch the bus"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

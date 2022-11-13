@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <style type="text/css">
+  <!--
+    #layer{
+      background-color: red;
+      height: 100px;
+      left: 10px;
+      position: absolute;
+      top: 50px;
+      width: 100px;
+      visibility: hidden;
+    }
+  -->
+  </style>
+
+  <script type="text/javascript"
+          src="http://developer.netscape.com/evangelism/lib/js/ua.js"></script>
+  <script type="text/javascript">
+
+    // Create global variables for browser type
+    var isIE4 = new Boolean(false);
+    var isNav4 = new Boolean(false);
+    var isDOM = new Boolean(false);
+
+    // determine browser type
+    isIE4 = navigator.family == "ie4" && navigator.version == 4;
+    isNav4 = navigator.family == "nn4";
+    isDOM = ((navigator.family == "ie4" && navigator.version > 4) ||
+              navigator.family =="gecko");
+
+    function changeState(layerRef, state){
+      if(isIE4 || isNav4){
+        eval("document" + layer + "['" + layerRef + "']"
+             + style + ".visibility = '" + state + "'");
+      }else if(isDOM){
+        var blockElement = document.getElementById(layerRef);
+        blockElement.style.visibility = state;
+      }
+    }
+
+  </script>
+</head>
+<body>
+<div name="layer" id="layer">
+  Hello World!
+</div>
+<p>
+  <a href="javascript:void(0)"
+     onmouseout="changeState('layer','hidden')"
+     onmouseover="changeState('layer','visible')">
+     Rollover to show and hide the layer.
+   </a>
+</p>
+</body>
+</html>

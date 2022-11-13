@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Match Once Or Not At All</title>
+</head>
+
+<body>
+<h2>Match Once Or Not At All</h2>
+
+Pattern = ab?a<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /ab?a/;
+
+//Test for "aa"
+document.write("Test for String \"aa\" returns ");
+document.write(regExpObj.test("aa"));
+document.write("<br /><br />");
+
+//Test for "aba"
+document.write("Test for String \"aba\" returns ");
+document.write(regExpObj.test("aba"));
+document.write("<br /><br />");
+
+//Test for "abba"
+document.write("Test for String \"abba\" returns ");
+document.write(regExpObj.test("abba"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

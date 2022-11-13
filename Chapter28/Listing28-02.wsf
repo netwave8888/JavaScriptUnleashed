@@ -1,0 +1,6 @@
+<job>
+  <script language="JScript">
+    // Output the Hello World text.
+    WScript.Echo("Hello World!");
+  </script>
+</job>

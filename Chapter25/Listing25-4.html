@@ -1,0 +1,7 @@
+function SetCookie (name, value, expires, path, domain, secure) {
+  var expString = ((expires == null) ? "" : ("; expires=" + expires.toGMTString()));
+  var pathString = ((path == null) ? "" : ("; path=" + path));
+  var domainString = ((domain == null) ? "" : ("; domain=" + domain));
+  var secureString = ((secure == true) ? "; secure" : "");
+  document.cookie = name + "=" + escape (value) + expString + pathString + domainString + secureString;
+}

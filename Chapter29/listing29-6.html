@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Matching Any One Character</title>
+</head>
+
+<body>
+<h2>Matching Any One Character</h2>
+
+Pattern = [abc][^def]<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /[abc][^def]/;
+
+//Test for "ag"
+document.write("Test for String \"ag\" returns ");
+document.write(regExpObj.test("ag"));
+document.write("<br /><br />");
+
+//Test for "ge"
+document.write("Test for String \"ge\" returns ");
+document.write(regExpObj.test("ge"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

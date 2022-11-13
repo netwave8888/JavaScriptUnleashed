@@ -1,0 +1,111 @@
+<html>
+<head>
+  <title>Intranet Employee Database</title>
+  <script type="text/javascript">
+
+    // Global variables
+    var i = 0;
+
+    // Create Array objects
+    var empList = new Array();
+
+    // Employee object constructor
+    function employee(FirstName, LastName, HomePhone, Ext,  EmailAddress) 
+    {
+      this.FirstName = FirstName;
+      this.LastName = LastName;
+      this.HomePhone = HomePhone;
+      this.Ext = Ext;
+      this.EmailAddress = EmailAddress;
+      this.show = show;
+    }
+
+    function show() 
+    {
+      alert(this.FirstName + "/n" +
+            this.LastName + "/n" +
+            this.HomePhone + "/n" +
+            this.Ext + "/n" +
+            this.EmailAddress);
+    }
+
+    function addEmployeeObject(FirstName, LastName, HomePhone, 
+                               Ext, EmailAddress) 
+    {
+      empList[i] = new employee(FirstName, LastName, HomePhone, Ext, EmailAddress);
+    }
+
+    function insertRecord() 
+    {
+      FirstName = document.form1.FirstName.value;
+      LastName = document.form1.LastName.value;
+      HomePhone = document.form1.HomePhone.value;
+      Ext = document.form1.Ext.value;
+      EmailAddress = document.form1.EmailAddress.value;
+      i++;
+      addEmployeeObject(FirstName, LastName, HomePhone, Ext, EmailAddress);
+
+      //Clear fields
+      document.form1.FirstName.value = "";
+      document.form1.LastName.value = "";
+      document.form1.HomePhone.value = "";
+      document.form1.Ext.value = "";
+      document.form1.EmailAddress.value = "";
+    }
+
+    function showAll() 
+    {
+      objWindow = window.open("", "", "width=600,height=300,scrollbars=yes");
+      objWindow.document.write("<html><body>");
+      objWindow.document.write("<h1>Object Description<\/h1>");
+      for (var q=1; q<empList.length; q++) 
+      {
+        objWindow.document.write("<h3>" + empList[q].FirstName + " ");
+        objWindow.document.write(empList[q].LastName + "<\/h3>");
+        objWindow.document.write(empList[q].HomePhone + "<br \/>");
+        objWindow.document.write(empList[q].Ext + "<br \/>");
+        objWindow.document.write(empList[q].EmailAddress + "<br \/>");
+        objWindow.document.write("<\/body><\/html>");
+      }
+      objWindow.document.close();
+    }
+  </script>
+</head>
+<body>
+  <h1>Dynamic Object Creator</h1>
+  <p>Enter employee information in the form below and click the Add button.
+  Click the Show All button to view a list of all employees you have
+  entered.</p>
+  <form name="form1">
+    <table>
+      <tr>
+        <td>First Name:</td>      
+        <td><input type="text" size="20" maxlength="256" name="FirstName"></td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" size="20" maxlength="256" name="LastName"></td>
+      </tr>
+      <tr>
+        <td>Home Phone:</td>
+        <td><input type="text" size="20" maxlength="256" name="HomePhone"></td>
+      </tr>
+      <tr>
+        <td>Ext.:</td>
+        <td><input type="text" size="20" maxlength="256" name="Ext"></td>
+      </tr>
+      <tr>
+        <td>Email Address:</td>
+        <td><input type="text" size="20" maxlength="256" name="EmailAddress"></td>
+      </tr>
+      <tr>
+        <td></td><td><input type="button" name="Add" value="Add" 
+                   onClick="insertRecord()">
+            <input type="button" name="ShowAll" value="Show All"
+                   onClick="showAll()"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
+

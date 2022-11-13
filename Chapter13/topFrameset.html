@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Top-Level Frameset</title>
+<script type="text/javascript" language="JavaScript">
+
+     function getName(callingObject, relation, parentName) {
+      callingObject.document.write("My " + relation +
+        "'s name is " + parentName +".")
+     }
+
+</script>
+</head>
+<frameset ROWS="65%,35%">
+  <frame src="frmain.html"
+         name="main"
+         marginwidth="1"
+         marginheight="1">
+  <frame src="bottomFrameset.html"
+         name="footnotes"
+         marginwidth="1"
+         marginheight="1">
+  <noframes>
+Warning text should go here for browsers with no frame support.
+<body>
+</body>
+</noframes>
+</frameset>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    // Declare variables
+    var originalInt;
+
+    // intValue can be any 8 bit value.
+    var intValue = 0xDC; 
+    var controlValue = 0xF;
+    var fourBitValue;
+    var hexChar = "";
+    var hexString = "";
+
+    document.writeln("When displaying integers from memory,");
+    document.writeln("JavaScript always uses their decimal ");
+    document.writeln("equivalent: " + intValue);
+    originalInt = intValue;
+    fourBitValue =  controlValue & intValue;
+    hexChar = (fourBitValue == 0x0) ? "0" : hexChar;
+    hexChar = (fourBitValue == 0x1) ? "1" : hexChar;
+    hexChar = (fourBitValue == 0x2) ? "2" : hexChar;
+    hexChar = (fourBitValue == 0x3) ? "3" : hexChar;
+    hexChar = (fourBitValue == 0x4) ? "4" : hexChar;
+    hexChar = (fourBitValue == 0x5) ? "5" : hexChar;
+    hexChar = (fourBitValue == 0x6) ? "6" : hexChar;
+    hexChar = (fourBitValue == 0x7) ? "7" : hexChar;
+    hexChar = (fourBitValue == 0x8) ? "8" : hexChar;
+    hexChar = (fourBitValue == 0x9) ? "9" : hexChar;
+    hexChar = (fourBitValue == 0xA) ? "A" : hexChar;
+    hexChar = (fourBitValue == 0xB) ? "B" : hexChar;
+    hexChar = (fourBitValue == 0xC) ? "C" : hexChar;
+    hexChar = (fourBitValue == 0xD) ? "D" : hexChar;
+    hexChar = (fourBitValue == 0xE) ? "E" : hexChar;
+    hexChar = (fourBitValue == 0xF) ? "F" : hexChar;
+
+    // Build hexString placing digits from right to left
+    hexString = hexChar + hexString;
+
+    // Shift intValue four bits right
+    intValue = intValue >> 4;
+
+    // Extract the next four bit value
+    fourBitValue =  controlValue & intValue;
+
+    // Find the matching hex value and assign its string
+    // equivalent to hexChar.
+    hexChar = (fourBitValue == 0x0) ? "0" : hexChar;
+    hexChar = (fourBitValue == 0x1) ? "1" : hexChar;
+    hexChar = (fourBitValue == 0x2) ? "2" : hexChar;
+    hexChar = (fourBitValue == 0x3) ? "3" : hexChar;
+    hexChar = (fourBitValue == 0x4) ? "4" : hexChar;
+    hexChar = (fourBitValue == 0x5) ? "5" : hexChar;
+    hexChar = (fourBitValue == 0x6) ? "6" : hexChar;
+    hexChar = (fourBitValue == 0x7) ? "7" : hexChar;
+    hexChar = (fourBitValue == 0x8) ? "8" : hexChar;
+    hexChar = (fourBitValue == 0x9) ? "9" : hexChar;
+    hexChar = (fourBitValue == 0xA) ? "A" : hexChar;
+    hexChar = (fourBitValue == 0xB) ? "B" : hexChar;
+    hexChar = (fourBitValue == 0xC) ? "C" : hexChar;
+    hexChar = (fourBitValue == 0xD) ? "D" : hexChar;
+    hexChar = (fourBitValue == 0xE) ? "E" : hexChar;
+    hexChar = (fourBitValue == 0xF) ? "F" : hexChar;
+    hexString = hexChar + hexString;
+    document.write("<br>" + originalInt + " displayed in");
+    document.write(" hexadecimal :");
+    document.writeln(hexString);
+    // end hiding -->
+  </script>
+</body>
+</html>

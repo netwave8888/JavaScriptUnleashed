@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    // Create arrays to hold images
+    var overImg = new Array();
+    overImg[0] = new Image(24,24);
+    overImg[1] = new Image(24,24);
+
+    var defaultImg = new Array();
+    defaultImg[0] = new Image(24,24);
+    defaultImg[1] = new Image(24,24);
+
+    // Preload images in the array
+    overImg[0].src = "back-over.gif";
+    overImg[1].src = "forward-over.gif";
+
+    defaultImg[0].src = "back.gif";
+    defaultImg[1].src = "forward.gif";
+
+    // Change the state of image depending on the event that fired.
+    function rollImage(img,type){
+      switch(type){
+        case "over":
+          document.images[img].src = overImg[img].src;
+          break;
+        case "out":
+          document.images[img].src = defaultImg[img].src;
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <table border="1" cellpadding="5" cellspacing="0" align="center"
+         bgcolor="#c0c0c0">
+    <tr>
+      <td align="center">
+        <a href="javascript:history.back()">
+          <img src="back.gif" width="24" height="24" alt="Back"
+               border="0" onmouseout="rollImage('0','out')"
+               onmouseover="rollImage('0','over')"
+               /></a>
+      </td>
+      <td align="center">
+        <a href="javascript:history.forward()">
+          <img src="forward.gif" width="24" height="24" alt="Forward"
+             border="0"onmouseout="rollImage('1','out')"
+             onmouseover="rollImage('1','over')"
+             /></a>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

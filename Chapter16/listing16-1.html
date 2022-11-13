@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Initial Entry Points to the DOM</title>
+<script type="text/javascript">
+//Display the number of <h2> tags
+function displayNumH2s()
+{
+  var aNodeList = document.getElementsByTagName("h2");
+  for ( node in aNodeList) {
+    console.log("Node: " + node.tagName);
+  }
+  alert("There are " + aNodeList.length + " H2 tags in this document.");
+}
+
+//Display contents of the headerB tag
+function displayIdHeaderB()
+{
+  var headerBnode = document.getElementById("headerB");
+  var headerBtextNode = headerBnode.firstChild;
+  alert(headerBtextNode.nodeValue);
+}
+
+//Display the document element's tag name
+function displayDocumentTagName()
+{
+  // alert(document.documentElement.tagName);
+  alert(document.documentElement.title);
+}
+
+</script>
+</head>
+<body>
+
+<h2 id="headerA">This is Header A</h2>
+<h2 id="headerB">This is Header B</h2>
+
+<input type="button" 
+       onclick="displayNumH2s()" 
+       value="Display Number of H2 Tags"><br />
+<input type="button" 
+       onclick="displayIdHeaderB()" 
+       value="Display Id headerB Tag"><br />
+<input type="button" 
+       onClick="displayDocumentTagName()" 
+       value="Display Document Tag Name">
+
+</body>
+</html>

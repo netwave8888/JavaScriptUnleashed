@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!--
+    //Increment all the integers in the array and the lone integer
+    function increment(anInt, theArray) 
+    {
+      //Increment the integer
+      anInt++;
+
+      //Increment all the integers in the array
+      for(var i=0; i<theArray.length; i++)
+      {
+        theArray[i] = theArray[i] + 1;
+      }
+    }
+
+    function start() 
+    {
+      // Create an array object and store 4 integers in the array
+      var intArray = new Array(4,9,14,19);
+      var loneInt = 99;
+
+      //Display the current value in loneInt
+      document.write("<h2>Before<\/h2>");
+      document.write("loneInt = " + loneInt + "<br>");
+
+      // display current integer values in the array
+      for(var i=0; i<intArray.length; i++)
+      {
+        document.write("intArray[" + i + "]=" + intArray[i] + "<br>");
+      }
+
+      //Increment the variables
+      increment(loneInt, intArray);
+
+      //Display the current value in loneInt
+      document.write("<h2>After<\/h2>");
+      document.write("loneInt = " + loneInt + "<br>");
+
+      // display current integer values in the array
+      for(var i=0; i<intArray.length; i++)
+      {
+        document.write("intArray[" + i + "]=" + intArray[i] + "<br>");
+      }
+    }
+
+  //-->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    start();
+  //-->
+  </script>
+</body>
+</html>

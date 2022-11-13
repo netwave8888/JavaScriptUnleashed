@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Regular Expression Tester</title>
+
+<script type="text/javascript">
+
+// The function searches for the pattern in searchStr
+function searchForPattern(searchStr,pattern,REattributes,theResult)
+{
+  //Create Regular Expression Object
+  var regExpObj = new RegExp(pattern,REattributes);
+
+  //Populate the result field with the result of the search
+  theResult.value = regExpObj.exec(searchStr);
+}
+
+// This function replaces all occurrences of the pattern in
+// searchStr with replaceStr
+function replacePattern(searchStr,replaceStr,pattern,REattributes,theResult)
+{
+  //Create Regular Expression Object
+  var regExpObj = new RegExp(pattern,REattributes);
+
+  //Populate the result field with the result of the search
+  theResult.value = searchStr.replace(regExpObj,replaceStr);
+}
+
+// This function clears all the fields in the page
+function clearFields(field1, field2, field3, field4, field5)
+{
+  field1.value = "";
+  field2.value = "";
+  field3.value = "";
+  field4.value = "";
+  field5.value = "";
+}
+
+</script>
+</head>
+
+<body style="text-align:center">
+<h1>Regular Expression Tester</h1>
+<form name="myForm"">
+<table border="0">
+  <tr align="right">
+    <td>Search String:</td>
+    <td><input type="text" name="searchString"></td>
+  </tr>
+  <tr align="right">
+    <td>Replace String:</td>
+    <td><input type="text" name="replaceString"></td>
+  </tr>
+  <tr align="right">
+    <td>Attributes:</td>
+    <td><input type="text" name="REattributes"></td>
+  </tr>
+  <tr align="right">
+    <td>Pattern:</td>
+    <td><input type="text" name="pattern"></td>
+  </tr>
+</table>
+<br />
+<input type="button"
+       value="Search for pattern"
+       onclick="searchForPattern(searchString.value,
+                                 pattern.value,
+                                 REattributes.value,
+                                 result)">
+<input type="button"
+       value="Replace pattern"
+       onclick="replacePattern(searchString.value,
+                                 replaceString.value,
+                                 pattern.value,
+                                 REattributes.value,
+                                 result)">
+<input type="button"
+       value="Clear"
+       onclick="clearFields(searchString,
+                            replaceString,
+                            pattern,
+                            REattributes,
+                            result)">
+<br /><hr /><br />
+Result: <input type="text" name="result">
+
+</body>
+</html>

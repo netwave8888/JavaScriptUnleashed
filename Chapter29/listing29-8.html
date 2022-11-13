@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Match Character Repetition</title>
+</head>
+
+<body>
+<h2>Match Character Repetition</h2>
+
+Pattern = cho{1,2}se<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /cho{1,2}se/;
+
+//Test for "chose"
+document.write("Test for String \"chose\" returns ");
+document.write(regExpObj.test("chose"));
+document.write("<br /><br />");
+
+//Test for "choose"
+document.write("Test for String \"choose\" returns ");
+document.write(regExpObj.test("choose"));
+document.write("<br /><br />");
+
+//Test for "chooose"
+document.write("Test for String \"chooose\" returns ");
+document.write(regExpObj.test("chooose"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Contact Information</title>
+<script type="text/javascript">
+// Ensure that mandatory fields of
+// form have been completed
+function validateComplete(formObj)
+{
+     if (emptyField(formObj.firstName))
+          alert("Please enter your first name.");
+     else if (emptyField(formObj.lastName))
+          alert("Please enter your last name.");
+     else if (emptyField(formObj.address1)
+          && emptyField(formObj.address2))
+          alert("Please enter your address.");
+     else if (emptyField(formObj.city))
+          alert("Please enter your city or town.");
+     else if (emptyField(formObj.state))
+          alert("Please enter your state.");
+     else if (emptyField(formObj.email))
+          alert("Please enter your E-mail address.");
+     else return true;
+
+     return false;
+}
+
+// Check to see if field is empty
+function emptyField(textObj)
+{
+     if (textObj.value.length == 0) return true;
+     for (var i=0; i<textObj.value.length; ++i) 
+     {
+          var ch = textObj.value.charAt(i);
+          if (ch != ' ' && ch != '\t') return false;
+     }
+     return true;
+}
+
+</script>
+</head>
+<body>
+<h1>Contact Information (U.S.)</h1>
+<form name="myform" action="actionURL" method="post"
+      onSubmit="return validateComplete(document.myform)">
+<pre>
+First Name:<input type="text" name="firstName">
+Last Name: <input type="text" name="lastName">
+Address:   <input type="text" name="address1">
+           <input type="text" name="address2">
+</pre>
+
+City/Town:
+<input type="text" name="city" size="12">
+State:
+<input type="text" name="state" size="2">
+Zip Code:
+<input type="text" name="zip" size="5">
+
+<pre>
+Home Phone:<input type="text" name="homePhone" size="12">
+Work Phone:<input type="text" name="workPhone" size="12">
+FAX:       <input type="text" name="FAX" size="12">
+E-mail Address: <input type="text" name="email">
+Quest:          <input type="text" name="quest">
+Favorite Color: <input type="text" name="favColor">
+</pre>
+<hr />
+<input type="submit" name="submit" value="Submit">
+</form>
+<body>
+<html>

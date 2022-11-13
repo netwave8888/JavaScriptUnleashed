@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Match Any Numerical or Non-Numerical Characters</title>
+</head>
+
+<body>
+<h2>Match Any Numerical or Non-Numerical Characters</h2>
+
+Pattern = \d\D <br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /\d\D/;
+
+//Test for "4p"
+document.write("Test for String \"4p\" returns ");
+document.write(regExpObj.test("4p"));
+document.write("<br /><br />");
+
+//Test for "p4"
+document.write("Test for String \"p4\" returns ");
+document.write(regExpObj.test("p4"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

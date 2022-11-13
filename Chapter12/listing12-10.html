@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Favorite Songs</title>
+<script type="text/javascript" language="JavaScript">
+
+     function showSelection(objectName) {
+          var list = "";
+          for (var i=0; i<objectName.length; i++) {
+               if (objectName.options[i].selected) {
+                    list += objectName.options[i].text + "<p>";
+               }
+          }
+          var selWindow = window.open("", "Selections", "height=200,width=400");
+          selWindow.document.write("<h2>You picked the following songs: </h2><p><p>");
+          selWindow.document.write(list);
+          selWindow.document.close();
+     }
+
+</script>
+</head>
+<body>
+<form name="form1">
+Pick Your Favorite Songs From the List:<p>
+<select name="songs" size=5 multiple>
+<option>Fortress Around Your Heart</option>
+<option>Breakfast at Tiffany's</option>
+<option>Flood</option>
+<option>The Chess Game</option>
+<option>Liquid</option>
+<option>World's Apart</option>
+<option>Ironic</option>
+<option>1979</option>
+<option>Wonderwall</option>
+<option>Standing Outside a Broken Phone Booth</option>
+</select><p>
+<input type=button value="Show Selection"
+onClick="showSelection(this.form.songs)">
+</form>
+</body>
+</html>

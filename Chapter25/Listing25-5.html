@@ -1,0 +1,6 @@
+function ClearCookie (name) {
+  var ThreeDays = 3 * 24 * 60 * 60 * 1000;
+  var expDate = new Date();
+  expDate.setTime (expDate.getTime() - ThreeDays);
+  document.cookie = name + "=ImOutOfHere; expires=" + expDate.toGMTString();
+}

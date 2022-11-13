@@ -1,0 +1,16 @@
+<job>
+  <script language="JScript">
+
+    // Create a WshShell object.
+    WshShellObj = WScript.CreateObject("WScript.Shell");
+
+    // Specify the Desktop as a folder.
+    myDesktop = WshShellObj.SpecialFolders("Desktop");
+
+   // Create a shortcut to the Amazon.com website.
+   var urlShortcut = WshShellObj.CreateShortcut(myDesktop + "\\Amazon.url");
+   urlShortcut.TargetPath = "http://www.amazon.com";
+   urlShortcut.Save();
+
+  </script>
+</job>

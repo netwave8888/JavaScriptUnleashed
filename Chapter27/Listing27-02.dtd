@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!ELEMENT book (details , available)>
+<!ELEMENT details (title , edition , publisher , authorList)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT authorList (author+)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT available (#PCDATA)>
+

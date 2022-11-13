@@ -1,0 +1,21 @@
+function addBtn(name, file, alt, spacer, condition, command)
+{
+   /*
+   *  Description: Method of the buttonSet object used to add a new button to
+   *               the end of the button set.
+   *  Arguments: name - (string) Name used as button's HTML element name.
+   *             file - (string) The button image's source url.
+   *             alt  - (string) The alt attribute for the button.
+   *             spacer - (integer) number of pixels of horizontal spacing used
+   *                      after the button being added.
+   *             condition - (string) conditional statement determines
+   *                         whether or not to display the button.
+   *             commmand - (string) The command to be executed.
+   */
+
+   var i = this.length;
+   this[i] = new button(name,file,alt,
+             "javascript:parent."+this.name+"["+i+"]"+".click()",
+             spacer,condition,command);
+   this.length++;
+}

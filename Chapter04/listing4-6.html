@@ -1,0 +1,42 @@
+<html>
+<head>
+
+<title>
+Complex Numbers
+</title>
+
+<script type="text/javascript">
+// define complex numbers
+
+function Complex(real, img){
+  this.real = real;
+  this.img = img;
+}
+
+Complex.prototype.add = function (z) {
+  // add this + z  giving rz
+  var a;
+  var b;
+  var rz;
+
+  a = this.real + z.real;
+  b = this.img  + z.img;
+  rz = new Complex (a,b);
+  return rz;
+}
+
+Complex.prototype.toString = function () {
+  return '(' + this.real + ' + ' + this.img + 'i)';
+}
+</script>
+</head>
+
+<body>
+<script type="text/javascript">
+var a = new Complex(3, 1);
+var b = new Complex(1, 2);
+var c = a.add(b);
+document.write(a + ' + ' + b + ' = ' + c);
+</script>
+</body>
+</html> 

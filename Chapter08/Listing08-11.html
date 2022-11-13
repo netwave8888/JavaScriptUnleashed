@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+     // Add description property to Number objects
+    Number.prototype.description = null;
+
+    // Speed Limit Numbers
+    slHighway = new Number(65);
+    slCity = new Number(35);
+    slSchoolZone = new Number(25);
+
+    // Add Descriptions
+    slHighway.description = "Interstate Highway Speed Limit";
+    slCity.description = "City Speed Limit";
+    slSchoolZone.description = "School Zone Speed Limit";
+
+    // Subtract num2 from num1 and display the value of the difference
+    // between the two along with the original number descriptions.
+    function tellDifference(num1, num2) {
+      diff = num1 - num2;
+      document.write("The speed difference between " + num1.description +
+                     " and " + num2.description + " is " + diff);
+    }
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+    // Call function
+    tellDifference(slHighway,  slCity);
+  </script>
+</body>
+</html>

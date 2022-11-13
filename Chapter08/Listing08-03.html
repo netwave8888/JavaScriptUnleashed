@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    // Define a new method for the String object
+    String.prototype.replace = stringReplace;
+
+    function stringReplace(findText, replaceText) {
+
+      // Had to add this variable to inherit calling object
+      var originalString = new String(this);
+
+      var pos = 0;
+      var len = findText.length;
+      pos = originalString.indexOf(findText);
+      while (pos != -1) {
+        preString = originalString.substring(0, pos);
+        postString = originalString.substring(pos + len,originalString.length);
+        originalString = preString + replaceText + postString;
+        pos = originalString.indexOf(findText);
+      }
+      return originalString;
+    }
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+    // Declare variables
+    var origString = new String("Allen");
+    var findString = new String("All");
+    var replaceString = new String("Ell");
+
+    // Notice the difference here
+    var resultString = origString.replace(findString, replaceString)
+
+    // Write results to the page
+    document.write("The original string was: " + origString + "<br />");
+    document.write("We searched for: " + findString + "<br />");
+    document.write("We replaced it with: " + replaceString + "<hr size='1' />");
+    document.write("The result was: " + resultString);
+  </script>
+</body>
+</html>

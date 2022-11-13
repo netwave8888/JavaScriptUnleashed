@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Dialog from function call</title>
+  <script type="text/javascript">
+  <!--
+    function opendoc(){
+      alert("Dialog called by Push Button");
+    }
+  // -->
+  </script>
+</head>
+<body>
+  <p>
+    Test page of function called from Push Button
+  </p>
+  <form method="post" action="null">
+    <p>
+      <input type="button" name="BUTTON1" value="PUSH" onclick="opendoc()" />
+    </p>
+  </form>
+</body>
+</html>

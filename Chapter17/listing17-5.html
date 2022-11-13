@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Insert Before Node Example</title>
+<script type="text/javascript">
+function addNewRow(where)
+{
+  //Get new row data.
+  var newFirstName = document.getElementById("newFirstName").getAttribute("value");
+  var newLastName = document.getElementById("newLastName").getAttribute("value");
+  var newAge = document.getElementById("newAge").getAttribute("value");
+  
+  //Create new table row elements.
+  var newTR = document.createElement("tr");
+  var newTD1 = document.createElement("td");
+  var newTD2 = document.createElement("td");
+  var newTD3 = document.createElement("td");
+  var newText1 = document.createTextNode(newFirstName);
+  var newText2 = document.createTextNode(newLastName);
+  var newText3 = document.createTextNode(newAge);
+  
+  //Connect the new row elements.
+  newTD1.appendChild(newText1);
+  newTD2.appendChild(newText2);
+  newTD3.appendChild(newText3);
+  newTR.appendChild(newTD1);
+  newTR.appendChild(newTD2);
+  newTR.appendChild(newTD3);
+  
+  //Get tbody element of dbRowsTable.
+  var tbody = document.getElementById("dbRowsTable").firstChild;
+
+  //Insert new row into the dbRowTable where user specified.
+  if(where == "top")
+  {
+    //Insert new row before the first data row.  Must skip over the header row.
+    tbody.insertBefore(newTR,tbody.firstChild.nextSibling);
+  }
+  else
+  {
+    //Insert new row at end of list.
+    tbody.appendChild(newTR);
+  }
+}
+</script>
+</head>
+<body>
+<h1>User Database Table</h1>
+
+Add a new row:
+<table>
+  <tr><td>First Name:</td><td><input type="text" name="newFirstName"></td></tr>
+  <tr><td>Last Name:</td><td><input type="text" name="newLastName"></td></tr>
+  <tr><td>Age:</td><td><input type="text" name="newAge"></td></tr>
+</table>
+<button onclick="addNewRow('top')">Add To Top</button>
+<button onclick="addNewRow('bottom')">Add To Bottom</button>
+
+<br /><hr /><br />
+
+<table id="dbRowsTable" border="1">
+<tr>
+  <th>FIRST NAME</th>
+  <th>LAST NAME</th>	
+  <th>AGE</th>
+</tr>
+</table>
+
+</body>
+</body>
+</html>

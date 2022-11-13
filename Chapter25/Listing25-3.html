@@ -1,0 +1,18 @@
+function GetCookieNum (name, cookieNum) {
+  var result = null;
+  if (cookieNum >= 1) {
+    var myCookie = " " + document.cookie + ";";
+    var searchName = " " + name + "=";
+    var nameLength = searchName.length;
+    var startOfCookie = myCookie.indexOf(searchName);
+    var cntr = 0;
+    for (cntr = 1; cntr < cookieNum; cntr++)
+      startOfCookie = myCookie.indexOf(searchName, startOfCookie + nameLength);
+    if (startOfCookie != -1) {
+      startOfCookie += nameLength; // skip past cookie name
+      var endOfCookie = myCookie.indexOf(";", startOfCookie);
+      result = unescape(myCookie.substring(startOfCookie, endOfCookie));
+    }
+  }
+  return result;
+}

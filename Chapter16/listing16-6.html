@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Navigating Child Nodes</title>
+<script type"text/javascript">
+
+//Get the next node in the tree
+function next(currentNode,level)
+{
+  //See if current node has child nodes.  
+  if(currentNode.hasChildNodes())
+  {
+    //Display information about current node
+    displayNode(currentNode,level);
+
+    //Loop through children of currentNode
+    var children = currentNode.childNodes;
+    for(var i=0; i<children.length; i++)
+    {
+      next(children.item(i),(level+1));
+    }
+  }
+  else
+  {
+    displayNode(currentNode,level);
+  }
+}
+
+//Display the tag name and type and any text that it contains
+function displayNode(aNode,level)
+{
+  document.write("<tr><td>" + level + "</td><td>");
+  document.write(aNode.nodeName + "</td><td>");
+  document.write(aNode.nodeType + "</td><td>");
+  document.write(aNode.nodeValue + "</td><td>");
+  if(aNode.hasChildNodes())
+  {
+    document.write(aNode.firstChild.nodeName + "</td><td>");
+    document.write(aNode.lastChild.nodeName + "</td></tr>");
+  }
+  else
+  {
+    document.write("</td><td></td></tr>");
+  }
+}
+</script>
+</head>
+
+
+<body>
+<h1>Multiplication Table</h1>
+
+<table id="multiplicationTable" border="1">
+  <tr><td></td><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td>1</td><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td>2</td><td>2</td><td>4</td><td>6</td></tr>
+  <tr><td>3</td><td>3</td><td>6</td><td>9</td></tr>
+</table>
+
+<hr />
+
+The following chart shows all the children of the  
+multiplication table using JavaScript.
+
+<table border="1">
+<tr><td>LEVEL</td><td>NAME</td><td>TYPE</td><td>VALUE</td>
+<td>FIRSTCHILD</td><td>LASTCHILD</td></tr>
+
+<script type="text/javascript">
+  //Start at the multiplication table
+  next(document.getElementById("multiplicationTable"),1);
+</script>
+
+</table>
+</body>
+</html>

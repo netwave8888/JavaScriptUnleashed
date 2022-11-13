@@ -1,0 +1,427 @@
+<html>
+<head>
+<script type="text/javascript">
+
+//===============================================================
+// Here are our standard Cookie routines
+//===============================================================
+//---------------------------------------------------------------
+// GetCookie - Returns the value of the specified cookie or null
+//             if the cookie doesn't exist
+//---------------------------------------------------------------
+function GetCookie(name)
+{
+  var result = null;
+  var myCookie = " " + document.cookie + ";";
+  var searchName = " " + name + "=";
+  var startOfCookie = myCookie.indexOf(searchName);
+  var endOfCookie;
+  if (startOfCookie != -1)
+  {
+    startOfCookie += searchName.length;
+    // skip past cookie name
+    endOfCookie = myCookie.indexOf(";", startOfCookie);
+    result = unescape(myCookie.substring(startOfCookie,endOfCookie));
+  }
+  return result;
+}
+
+//---------------------------------------------------------------
+// SetCookieEZ - Quickly sets a cookie which will last until the
+//               user shuts down his browser
+//---------------------------------------------------------------
+function SetCookieEZ(name, value)
+{
+  document.cookie = name + "=" + escape(value);
+}
+
+//---------------------------------------------------------------
+// SetCookie - Adds or replaces a cookie. Use null for parameters
+//             that you don't care about
+//---------------------------------------------------------------
+function SetCookie(name, value, expires, path, domain, secure)
+{
+  var expString = ((expires == null)? "" : ("; expires=" + 
+                    expires.toGMTString()));
+  var pathString = ((path == null) ? "" : ("; path=" + path));
+  var domainString = ((domain == null)? "" : ("; domain=" + domain));
+  var secureString = ((secure == true) ? "; secure" : "");
+  document.cookie = name + "=" + escape(value)+ expString + pathString + 
+                    domainString+ secureString;
+}
+
+//---------------------------------------------------------------
+// ClearCookie  - Removes a cookie by setting an expiration date
+//                three days in the past
+//---------------------------------------------------------------
+function ClearCookie(name)
+{
+  var ThreeDays = 3 * 24 * 60 * 60 * 1000;
+  var expDate = new Date();
+  expDate.setTime (expDate.getTime() - ThreeDays);
+  document.cookie = name + "=ImOutOfHere; expires="+ expDate.toGMTString();
+}
+
+//===============================================================
+// Here are the object and the routines for our Favorites app
+//===============================================================
+//---------------------------------------------------------------
+/* Here is our "favorite" object.
+   Properties: fullName - The full descriptive name
+               cook     - The code used for the cookie
+               urlpath  - The full url (http://...) to the site
+      Methods: Enabled - Returns true if the link's cookie is
+                         turned on
+               Checked  - Returns the word "CHECKED" if the
+                          link's cookie is turned on
+               WriteAsCheckBox - Sends text to the document in a
+                                 checkbox control format
+               WriteAsWebLink  - Sends text to the document in a
+                                 <a href...> format
+---------------------------------------------------------------*/
+function favorite(fullName, cook, urlpath)
+{
+  this.fullName = fullName;
+  this.cook   = cook;
+  this.urlpath  = urlpath;
+  this.Enabled = Enabled;
+  this.Checked = Checked;
+  this.WriteAsCheckBox = WriteAsCheckBox;
+  this.WriteAsWebLink = WriteAsWebLink;
+}
+
+//---------------------------------------------------------------
+// Enabled - Checks to see if the cookie exists
+// returns - true if the cookie exists
+//           false if it doesn't
+//---------------------------------------------------------------
+function Enabled()
+{
+  var result = false;
+  var FaveCookie = GetCookie("Favorites");
+  if (FaveCookie != null)
+  {
+    var searchFor = "<" + this.cook + ">";
+    var startOfCookie = FaveCookie.indexOf(searchFor);
+    if (startOfCookie != -1)
+      result = true;
+  }
+  return result;
+}
+
+//---------------------------------------------------------------
+// Checked - Checks to see if the cookie exists (using Enabled)
+// returns - 'CHECKED ' if the cookie exists
+//           "" if it doesn't
+//---------------------------------------------------------------
+function Checked ()
+{
+  if (this.Enabled())
+    return "CHECKED ";
+  return "";
+}
+//---------------------------------------------------------------
+// WriteAsCheckBox - The favorite may be either a regular URL or
+//                   a section title.  If the urlpath is an empty
+//                   string, then the favorite is a section title.
+//                   The links will appear within a definition
+//                   list, and are formatted appropriately.
+//---------------------------------------------------------------
+function WriteAsCheckBox ()
+{
+  // Check to see if it's a title or regular link
+  if (this.urlpath == "")
+  {
+    // It's a section title
+    result = '<dt><strong>' + this.fullName + '<\/strong>';
+  }
+  else
+  {
+    // It's a regular link
+    result = '<dd><input type="checkbox" name="' + 
+             this.cook + '" '+ this.Checked() +              'onClick="SetFavoriteEnabled(this.name,this.checked);">' + 
+             this.fullName;
+  }
+  document.write(result);
+}
+
+//---------------------------------------------------------------
+// Global Variable:
+// NextHeading - Sometimes we only want to print a heading if one
+//               of its favorites is turned on.  The NextHeading
+//               variable helps us to do this. See WriteAsWebLink
+//---------------------------------------------------------------
+var NextHeading = "";
+
+//---------------------------------------------------------------
+// WriteAsWebLink - The favorite may be either a regular URL or
+//                  a section title.  If the urlpath is an empty
+//                  string, then the favorite is a section title.
+//                  The links will appear within a definition
+//                  list, and are formatted appropriately.
+//---------------------------------------------------------------
+function WriteAsWebLink()
+{
+  var result = '';
+  if (this.urlpath == "")
+  {
+    NextHeading = this.fullName;   // It must be a Title
+  }
+  else
+  {
+    if (this.Enabled() || (GetCookie("ViewAll") == "T"))
+    {
+      if (NextHeading != "")
+      {
+        result = '<p><dt><strong>' + NextHeading+ '<\/strong>';
+        NextHeading = "";
+      }
+      result = result + '<dd><a href="' + this.urlpath + '">'+ 
+               this.fullName + '<\/a>';
+    }
+  }
+  document.write(result);
+}
+
+//===============================================================
+// Global Variables
+//===============================================================
+/*---------------------------------------------------------------
+FaveList will be a list of all favorite objects, which are
+then declared below.  Favorites with an empty urlpath property
+are section headings
+---------------------------------------------------------------*/
+var FaveList = new Array();
+// Comics Section -------------------
+FaveList[1] = new favorite("Comics", "", "");
+FaveList[2] = new favorite("Dilbert", "cdilb",
+                           "http://www.unitedmedia.com/comics/dilbert/");
+FaveList[3] = new favorite("Doonesbury", "cdoon",
+                           "http://www.doonesbury.com");
+FaveList[4] = new favorite("Mr. Boffo", "cboff",
+                           "http://www.mrbuffo.com");
+// General News Section -------------
+FaveList[5] = new favorite("General News", "", "");
+FaveList[6] = new favorite("CNN", "ncnn", "http://www.cnn.com/");
+FaveList[7] = new favorite("NPR", "nnpr","http://www.npr.org/news/");
+FaveList[8] = new favorite("Boston Globe", "nbos","http://www.boston.com/");
+// Computer Industry Section --------
+FaveList[9] = new favorite("Computer Industry", "", "");
+FaveList[10] = new favorite("W3", "w3","http://www.w3.org");
+FaveList[11] = new favorite("JavaScript.com", "js",
+                            "http://www.javascript.com");
+FaveList[12] = new favorite("Netscape", "ntsc","http://devedge.netscape.com/");
+FaveList[13] = new favorite("Microsoft", "micr","http://msdn.microsoft.com/");
+// Search Engines Section -----------
+FaveList[14] = new favorite("Search Engines", "", "");
+FaveList[15] = new favorite("Yahoo!", "syah","http://www.yahoo.com/");
+FaveList[16] = new favorite("Alta Vista", "sav","http://www.altavista.com/");
+FaveList[17] = new favorite("Google", "goog","http://www.google.com/");
+// Auction Section ------------------
+FaveList[18] = new favorite("Auctions", "", "");
+FaveList[19] = new favorite("ebay", "ebay","http://www.ebay.com/");
+FaveList[20] = new favorite("Yahoo Auctions", "yhac",
+                            "http://auctions.yahoo.com/");
+// Misc. Section --------------------
+FaveList[21] = new favorite("Misc.", "", "");
+FaveList[22] = new favorite("Today in History","mtih",
+                            "http://www.thehistorynet.com/today/today.htm");
+FaveList[23] = new favorite("Merriam-Webster's Word of the Day","mwod",
+                            "http://www.m-w.com/cgi-bin/mwwod.pl");
+FaveList[24] = new favorite("Quotes of the Day", "mquot","http://www.starlingtech.com/quotes/qotd.html");
+
+//===============================================================
+// Page Writing Routines
+//===============================================================
+//---------------------------------------------------------------
+// SendOptionsPage - Writes a page allowing the user to select
+//                   their favorite preferences
+//---------------------------------------------------------------
+function SendOptionsPage()
+{
+  document.write('<h1>Select Favorites<\/h1>');
+  document.write('<form method=post>');
+  // Here's the button for viewing the Favorites page
+  document.write('<input type=button value="Show Favorites" '+ 'onClick="' +
+                 'ReloadPage()'+';">');
+  // The links will look nicer inside a definition list.
+  document.write('<dl>');
+  
+  for (var i = 1; i < FaveList.length; i++)
+    FaveList[i].WriteAsCheckBox();
+  // Write each checkbox
+  document.write('<\/dl><p>');
+  ClearCookie("ViewAll");
+  document.write('<\/form>');
+}
+
+//---------------------------------------------------------------
+// LoadOptions - Sets the ShowOptions cookie, which makes the
+//               option selection page appear when the page is
+//               then reloaded.
+//---------------------------------------------------------------
+function LoadOptions()
+{
+  SetCookieEZ("ShowOptions", "T");
+  window.open(document.location.href, "_top", "");
+}
+
+//---------------------------------------------------------------
+// ToggleView - Toggles ViewAll mode on and off.  When on, all
+//              links will be displayed.  When off, only the
+//              user's favorite selections will be displayed.
+//---------------------------------------------------------------
+function ToggleView()
+{
+  if (GetCookie("ViewAll") == "T")
+  {
+    ClearCookie("ViewAll");
+  }
+  else
+  {
+    var fiveYears = 5 * 365 * 24 * 60 * 60 * 1000;
+    var expDate = new Date();
+    expDate.setTime (expDate.getTime() + fiveYears );
+    SetCookie("ViewAll", "T", expDate, null, null, false);
+  }
+  window.open(document.location.href, "_top", "");
+}
+
+//---------------------------------------------------------------
+// SendPersonalPage - Writes a page showing the categories and
+//                    links which the user prefers. Only shows a
+//                    heading if one of its favorites is enabled
+//---------------------------------------------------------------
+function SendPersonalPage()
+{
+  if (GetCookie("ViewAll") != "T")
+    document.write('<h1>Your Favorites:<\/h1>');
+  else
+    document.write('<h1>Links:<\/h1>');
+  // Here are the buttons for viewing the options or
+  // "View All" pages
+  document.write('<form method=post>');
+  if (GetCookie("ViewAll") == "T")
+  {
+    document.write('<input type=button value="View Favorites" ' +
+                   'onClick="ToggleView();">');
+  }
+  else
+  {
+    document.write('<input type=button value="View All" ' +
+                   'onClick="ToggleView();">');
+  }
+  document.write('<input type=button '+ 'value="Select Personal Favorites" ' +                               'onClick="LoadOptions();">');
+  document.write('<\/form>');
+  // The links will look nicer inside a definition list
+  document.write('<dl>');
+  for (var i = 1; i < FaveList.length; i++)
+    FaveList[i].WriteAsWebLink();    // Write each link
+  document.write('<\/dl><p>');
+}
+
+//===============================================================
+// Helper Functions
+//===============================================================
+//---------------------------------------------------------------
+// isEnabled - Returns True if the favorite identified by the
+//             name parameter is enabled.
+//---------------------------------------------------------------
+function isEnabled(name)
+{
+  var result = false;
+  var FaveCookie = GetCookie("Favorites");
+  if (FaveCookie != null)
+  {
+    var searchFor = "<" + name + ">";
+    var startOfCookie = FaveCookie.indexOf(searchFor);
+    if (startOfCookie != -1)
+      result = true;
+  }
+  return result;
+}
+
+//---------------------------------------------------------------
+// AddFavorite- Enables the favorite identified by the name
+//              parameter.
+//---------------------------------------------------------------
+function AddFavorite(name)
+{
+  if (!isEnabled(name))
+  {
+    var fiveYears = 5 * 365 * 24 * 60 * 60 * 1000;
+    var expDate = new Date();
+    expDate.setTime (expDate.getTime() + fiveYears );
+    SetCookie("Favorites", GetCookie("Favorites")+ "<" + name + 
+              ">", expDate, null, null, false);
+  }
+}
+
+//---------------------------------------------------------------
+// ClearFavorite- Disables the favorite identified by the name
+//                parameter.
+//---------------------------------------------------------------
+function ClearFavorite(name)
+{
+  if (isEnabled(name))
+  {
+    var FaveCookie = GetCookie("Favorites");
+    var searchFor = "<" + name + ">";
+    var startOfCookie = FaveCookie.indexOf(searchFor);
+    var NewFaves = FaveCookie.substring(0, startOfCookie) +
+                   FaveCookie.substring(startOfCookie + searchFor.length,
+                                        FaveCookie.length);
+    var fiveYears = 5 * 365 * 24 * 60 * 60 * 1000;
+    var expDate = new Date();
+    expDate.setTime (expDate.getTime() + fiveYears );
+    SetCookie("Favorites", NewFaves, expDate, null, null, false);
+  }
+}
+
+//---------------------------------------------------------------
+// SetFavoriteEnabled - Turns the favorite identified by the name
+//                      parameter on (SetOn=true) or off
+//                      (SetOn=false).
+//---------------------------------------------------------------
+function SetFavoriteEnabled(name, SetOn)
+{
+  if (SetOn)
+    AddFavorite(name);
+  else
+    ClearFavorite(name);
+}
+
+//---------------------------------------------------------------
+// ReloadPage - Reloads the page
+//---------------------------------------------------------------
+function ReloadPage()
+{
+  window.open(document.location.href, "_top", "");
+}
+
+</script>
+</head>
+<body>
+<script type="text/javascript">
+/*---------------------------------------------------------------
+Here's where we select the page to send.  Normally we send the
+personalized favorites page (by calling SendPersonalPage). However,
+If the cookie ShowOptions is set, we'll send the options selection
+page instead (by calling SendOptionsPage).
+---------------------------------------------------------------*/
+if (GetCookie("ShowOptions") == "T")
+{
+  ClearCookie("ShowOptions");
+  SendOptionsPage();
+}
+else
+{
+  SendPersonalPage();
+}
+</script>
+<center>
+This is a very dull page unless you have a JavaScript
+enabled browser.<br />
+</center>
+</body>
+</html>

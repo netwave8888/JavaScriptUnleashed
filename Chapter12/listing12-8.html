@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Using Radio Buttons</title>
+<script type="text/javascript" language="JavaScript">
+     function getRadioValue(radioObject) {
+          var value = null;
+          for (var i=0; i<radioObject.length; i++) {
+               if (radioObject[i].checked) {
+                    value = radioObject[i].value;
+                    break; 
+               }
+          }
+          return value;
+     }
+</script>
+</head>
+<body>
+<form name="form1">
+<p><input type=radio name="songs" value="Liquid">Liquid</p>
+<p><input type=radio name="songs" value="Flood">Flood</p>
+<p><input type=radio name="songs" value="World's Apart">World's Apart</p>
+<input type=button value="Show Selected"
+onClick="alert(getRadioValue(this.form.songs))">
+</form>
+</body>
+</html>

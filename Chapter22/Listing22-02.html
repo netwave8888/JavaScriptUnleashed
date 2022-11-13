@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript"
+        src="http://developer.netscape.com/evangelism/lib/js/ua.js"></script>
+  <script type="text/javascript">
+
+    // Create arrays to hold images
+    var overImg = new Array();
+    overImg[0] = new Image(24,24);
+    overImg[1] = new Image(24,24);
+    overImg[2] = new Image(24,24);
+    overImg[3] = new Image(24,24);
+    overImg[4] = new Image(24,24);
+    overImg[5] = new Image(24,24);
+
+    var downImg = new Array();
+    downImg[0] = new Image(24,24);
+    downImg[1] = new Image(24,24);
+    downImg[2] = new Image(24,24);
+    downImg[3] = new Image(24,24);
+    downImg[4] = new Image(24,24);
+    downImg[5] = new Image(24,24);
+
+    var defaultImg = new Array();
+    defaultImg[0] = new Image(24,24);
+    defaultImg[1] = new Image(24,24);
+    defaultImg[2] = new Image(24,24);
+    defaultImg[3] = new Image(24,24);
+    defaultImg[4] = new Image(24,24);
+    defaultImg[5] = new Image(24,24);
+
+    // Preload images in the array
+    overImg[0].src = "back-over.gif";
+    overImg[1].src = "forward-over.gif";
+    overImg[2].src = "home-over.gif";
+    overImg[3].src = "reload-over.gif";
+    overImg[4].src = "search-over.gif";
+    overImg[5].src = "print-over.gif";
+
+    downImg[0].src = "back-down.gif";
+    downImg[1].src = "forward-down.gif";
+    downImg[2].src = "home-down.gif";
+    downImg[3].src = "reload-down.gif";
+    downImg[4].src = "search-down.gif";
+    downImg[5].src = "print-down.gif";
+
+    defaultImg[0].src = "back.gif";
+    defaultImg[1].src = "forward.gif";
+    defaultImg[2].src = "home.gif";
+    defaultImg[3].src = "reload.gif";
+    defaultImg[4].src = "search.gif";
+    defaultImg[5].src = "print.gif";
+
+    // Change the state of image depending on the event that fired.
+    function rollImage(img,type){
+      switch(type){
+        case "over":
+          document.images[img].src = overImg[img].src;
+          break;
+        case "out":
+          document.images[img].src = defaultImg[img].src;
+          break;
+        case "up":
+          document.images[img].src = defaultImg[img].src;
+          break;
+        case "down":
+          document.images[img].src = downImg[img].src;
+          break;
+      }
+    }
+
+    // Process the URL that was entered in the text box
+    function takeBrowser(ref){
+      var form = ref;
+      location.href = form.where.value;
+    }
+
+    // Process the buttons as they are pressed
+    function process(item){
+      switch(item){
+        case "find":
+          if(navigator.org == "microsoft"){
+            alert("Internet Explorer does not support this method");
+            break;
+          }
+          window.find();
+          break;
+        case "print":
+          window.print();
+          break;
+        case "home":
+          if(navigator.org == "microsoft"){
+            alert("Internet Explorer does not support this method");
+            break;
+          }
+          window.home();
+          break;
+        case "reload":
+          document.location.reload();
+          break;
+        case "forward":
+          history.forward();
+          break;
+        case "back":
+          history.back();
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <table border="1" cellpadding="5" cellspacing="0" align="center"
+         bgcolor="#c0c0c0">
+    <tr>
+      <td align="center">
+        <a href="javascript:process('back')"
+             onmouseup="rollImage('0','up')"
+             onmousedown="rollImage('0','down')"
+             onmouseout="rollImage('0','out')"
+             onmouseover="rollImage('0','over')">
+          <img border="0" src="back.gif" width="24" height="24"
+               alt="Back" /></a>
+      </td>
+      <td align="center">
+        <a href="javascript:process('forward')"
+             onmouseup="rollImage('1','up')"
+             onmousedown="rollImage('1','down')"
+             onmouseout="rollImage('1','out')"
+             onmouseover="rollImage('1','over')">
+          <img border="0" src="forward.gif" width="24" height="24"
+               alt="Forward" /></a>      </td>
+      <td align="center">
+        <a href="javascript:process('home')"
+             onmouseup="rollImage('2','up')"
+             onmousedown="rollImage('2','down')"
+             onmouseout="rollImage('2','out')"
+             onmouseover="rollImage('2','over')">
+          <img border="0" src="home.gif" width="24" height="24"
+               alt="Home" /></a>
+      </td>
+      <td align="center">
+        <a href="javascript:process('reload')"
+             onmouseup="rollImage('3','up')"
+             onmousedown="rollImage('3','down')"
+             onmouseout="rollImage('3','out')"
+             onmouseover="rollImage('3','over')">
+          <img border="0" src="reload.gif" width="24" height="24"
+               alt="Reload" /></a>
+      </td>
+      <td align="center">
+        <a href="javascript:process('find')"
+             onmouseup="rollImage('4','up')"
+             onmousedown="rollImage('4','down')"
+             onmouseout="rollImage('4','out')"
+             onmouseover="rollImage('4','over')">
+          <img border="0" src="search.gif" width="24" height="24"
+               alt="Search" /></a>
+      </td>
+      <td align="center">
+        <a href="javascript:process('print')"
+             onmouseup="rollImage('5','up')"
+             onmousedown="rollImage('5','down')"
+             onmouseout="rollImage('5','out')"
+             onmouseover="rollImage('5','over')">
+          <img border="0" src="print.gif" width="24" height="24"
+               alt="Print" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6">
+        <form name="netsite" action="null">
+          <b>
+            Location:
+          </b>
+            <input type="text" size="40" value="Enter a URL here" name="where" />
+            <input type="button" value="Go" onclick="takeBrowser(this.form)" />
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6">
+        Result of Date.getTime() (reload verification):
+        <script type="text/javascript">
+          document.write((new Date()).getTime());
+        </script>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Compound Interest Calculator</title>
+<script type="text/javascript">
+function calculate(formObj)
+{
+     var presentVal = parseFloat(formObj.presentVal.value);
+     var intRate = parseFloat(formObj.intRate.value)/100.;
+     var years = parseFloat(formObj.years.value);
+
+     var futureVal = presentVal * Math.pow((1.0+intRate),years);
+     var totalInt = futureVal - presentVal;
+     futureVal = Math.round(futureVal*100.0)/100.0;
+     totalInt  = Math.round(totalInt*100.0)/100.0;
+
+     formObj.futureVal.value = futureVal;
+     formObj.totalInt.value = totalInt;
+
+     return;
+}
+</script>
+</head>
+
+<body>
+<h1>Compound Interest Calculator</h1>
+<form name="myform">
+<pre>
+Present Value:        <input type="text" name="presentVal">
+Interest Rate(%):     <input type="text" name="intRate">
+Years of Compounding: <input type="text" name="years">
+<input type="button" name="calc" value="Calculate"
+     onclick="calculate(myform)">
+</pre>
+<hr>
+<pre>
+Total Interest: <input type="text" name="totalInt">
+Future Value:   <input type="text" name="futureVal">
+<pre>
+</form>
+</body>
+<html>

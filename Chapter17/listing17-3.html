@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Adding Element Attributes</title>
+
+<script type="text/javascript">
+//Add border to the table.
+function addBorder()
+{
+  document.getElementById("multiplicationTable").setAttribute("border","1");
+}
+
+//Add background color to the table.
+function addBackgroundColor(color)
+{
+  //Get table element.
+  var table = document.getElementById("multiplicationTable");
+  
+  //Create an Attr object for the bgcolor attribute and assign it "green".
+  var bgColorAttr = document.createAttribute("bgcolor");
+  bgColorAttr.value = "green";
+  
+  //Associate the attribute with the table.
+  table.setAttributeNode(bgColorAttr);
+}
+</script>
+</head>
+
+<body>
+<h2>Multiplication Table</h2>
+
+<table id="multiplicationTable">
+  <tr><td></td><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td>1</td><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td>2</td><td>2</td><td>4</td><td>6</td></tr>
+  <tr><td>3</td><td>3</td><td>6</td><td>9</td></tr>
+</table>
+
+<br />
+<button onclick="addBorder()">Add Table Border</button><br />
+<button onclick="addBackgroundColor()">Change Background Color</button>
+
+</body>
+</html>

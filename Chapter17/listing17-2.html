@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Deleting Element Attributes</title>
+
+<script type="text/javascript">
+//Remove the border from the table.
+function removeBorder()
+{
+  document.getElementById("multiplicationTable").removeAttribute("border");
+}
+
+//Remove the green background color from the table header.
+function removeColor(color)
+{
+  //Get list of <td> elements in table.
+  var table = document.getElementById("multiplicationTable");
+  var tdList = table.getElementsByTagName("td");
+	
+  //Loop through list <td> elements.
+  for(var i=0; i<tdList.length; i++)
+  {
+    var tdElement = tdList.item(i);
+
+    //Get the attribute.
+    var colorAttr = tdElement.getAttributeNode("bgcolor");
+			
+    //If the attribute matches the color then delete attribute.
+    if(colorAttr.value == color)
+    {
+      tdElement.removeAttributeNode(colorAttr);
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+<h2>Multiplication Table</h2>
+
+<table id="multiplicationTable" border="1">
+  <tr>
+    <td></td>
+    <td bgcolor="#ff0000">1</td>
+    <td bgcolor="#008000">2</td>
+    <td bgcolor="#ffff00">3</td>
+  </tr>
+  <tr>
+    <td bgcolor="#ff0000">1</td>
+    <td bgcolor="#ff0000">1</td>
+    <td bgcolor="#008000">2</td>
+    <td bgcolor="#ffff00">3</td>
+  </tr>
+  <tr>
+    <td bgcolor="#008000">2</td>
+    <td bgcolor="#008000">2</td>
+    <td bgcolor="#008000">4</td>
+    <td bgcolor="#ffff00">6</td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffff00">3</td>
+    <td bgcolor="#ffff00">3</td>
+    <td bgcolor="#ffff00">6</td>
+    <td bgcolor="#ffff00">9</td>
+  </tr>
+</table>
+
+<br />
+<button onclick="removeBorder()">Remove Table Border</button><br />
+<button onclick="removeColor('#ff0000')">Remove Red Background</button><br />
+<button onclick="removeColor('#008000')">Remove Green Background</button><br />
+<button onclick="removeColor('#ffff00')">Remove Yellow Background</button>
+
+</body>
+</html>

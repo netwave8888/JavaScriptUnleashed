@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<book>
+  <details>
+    <title>JavaScript Unleashed</title>
+    <edition>4th</edition>
+    <publisher>Sams</publisher>
+    <authorList>
+      <author>R. Allen Wyke</author>
+      <author>Jason D. Gilliam</author>
+    </authorList>
+  </details>
+  <available>2002</available>
+</book>

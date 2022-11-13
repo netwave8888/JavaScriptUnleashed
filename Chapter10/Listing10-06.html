@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+     function confirmAction() {
+       return confirm("Do you really want to do this?")
+     }
+  </script>
+</head>
+<body>
+<form action="/cgi-bin/buy.pl" onsubmit="return confirmAction()"
+      method="post">
+  <p>What books would you like to order?
+    <br />
+    <input type="checkbox" name="PJS" value="SKU01" />Pure JavaScript
+    <br />
+    <input type="checkbox" name="PDD" value="SKU02" />PHP Developer's Dictionary
+    <br />
+    <input type="checkbox" name="JSU" value="SKU03" />JavaScript Unleashed
+  </p>
+  <p>Please add some comments
+    <br />
+    <textarea name="comments" rows="6" cols="46"></textarea>
+  </p>
+  <p>
+    <input type="submit" value="Submit" />
+  </p>
+</form>
+</body>
+</html>

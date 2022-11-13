@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Match Group Number</title>
+</head>
+
+<body>
+<h2>Match Group Number</h2>
+
+Pattern = f(a|o)r\1<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /f(a|o)r\1/;
+
+//Test for "fara"
+document.write("Test for String \"fara\" returns ");
+document.write(regExpObj.test("fara"));
+document.write("<br /><br />");
+
+//Test for "foro"
+document.write("Test for String \"foro\" returns ");
+document.write(regExpObj.test("foro"));
+document.write("<br /><br />");
+
+//Test for "faro"
+document.write("Test for String \"faro\" returns ");
+document.write(regExpObj.test("faro"));
+document.write("<br /><br />");
+
+//Test for "fora"
+document.write("Test for String \"fora\" returns ");
+document.write(regExpObj.test("fora"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

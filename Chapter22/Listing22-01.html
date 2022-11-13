@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <style type="text/css">
+  <!--
+    /* Global styles */
+    a{
+      text-decoration: none;
+      font-size: 8pt;
+    }
+
+    /* Properties of the menus on the menubar */
+    #help{
+      background-color: #c0c0c0;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+
+    #go{
+      background-color: #c0c0c0;
+      left: 0px;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    /* Properties of the actual menus that are hidden until clicked */
+    #gomenu{
+      background-color: #c0c0c0;
+      left: 10px;
+      position: absolute;
+      top: 20px;
+      visibility: hidden;
+      width: 80px;
+    }
+
+    #helpmenu{
+      background-color: #c0c0c0;
+      right: 10px;
+      position: absolute;
+      top: 20px;
+      visibility: hidden;
+      width: 80px;
+      font-size: 8pt;
+    }
+
+    /* Properties of About Dialog box */
+    #about{
+      background-color: gray;
+      border: 2px solid black;
+      height: 100px;
+      left: 100px;
+      position: absolute;
+      top: 50px;
+      visibility: hidden;
+      vertical-align: left;
+      width:  200px;
+    }
+  -->
+  </style>
+  <script type="text/javascript"
+        src="http://developer.netscape.com/evangelism/lib/js/ua.js"></script>
+  <script type="text/javascript">
+    // Create global variables for browser type
+	var isDOM = new Boolean(false);
+
+	// make sure its IE 5+ or Netscape 6+
+	if((navigator.family == "ie4" && navigator.version > 4) ||
+	    navigator.family =="gecko"){
+	  isDOM = true;
+	}else{
+	  isDOM = false;
+	}
+
+	if(!isDOM){
+	  alert("Your browser does not support this menu");
+	  window.back();
+	}
+
+	function changeState(layerRef, state){
+      var blockElement = document.getElementById(layerRef);
+      blockElement.style.visibility = state;
+    }
+  </script>
+</head>
+<body>
+  <div id="go" onmousedown="changeState('helpmenu','hidden')"
+     onmouseup="changeState('gomenu','visible')">
+    Go
+  </div>
+
+  <div id="help" onmousedown="changeState('gomenu','hidden')"
+     onmouseup="changeState('helpmenu','visible')">
+    Help
+  </div>
+
+  <div id="gomenu">
+    <a href="http://developer.netscape.com">DevEdge</a>
+    <hr size="1" />
+    <a href="http://www.mozilla.org">Mozilla.org</a>
+    <hr size="1" />
+    <a href="http://msdn.microsoft.com">MSDN</a>
+  </div>
+
+  <div id="helpmenu" onclick="changeState('helpmenu','hidden')"
+     onmouseup="changeState('about','visible')">About...
+  </div>
+
+  <div id="about">
+    <table border="0">
+      <tr>
+        <td>
+          <img src="info-icon.gif" width="32" height="32" alt="Info" />
+        </td>
+        <td>
+          This DHTML Menu was created by R. Allen Wyke for JavaScript
+          Unleashed.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right">
+          <form name="form1" action="null">
+            <input type="button" value="Close"
+                   onclick="changeState('about','hidden')" />
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

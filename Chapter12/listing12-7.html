@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Online Registration</title>
+<script type="text/javascript" language="JavaScript">
+
+     function selectText(currentObject) {
+          if (document.form1.selectBox.checked) {
+               currentObject.select();
+          }
+     }
+
+</script>
+</head>
+
+<body>
+<form name="form1" method="POST">
+<h2>Online Registration</h2>
+<p>Username:<br>
+<input type=text size=25 maxlength=256 name="Username"
+onFocus="selectText(this)"><br>
+Browser used:<br>
+<input type=text size=25 maxlength=256 name="Browser"
+onFocus="selectText(this)"><br>
+Email address:<strong> <br>
+</strong><input type=text size=25 maxlength=256 name="EmailAddress"
+onFocus="selectText(this)"></p>
+<h2><input type=submit value="Register"> <input type=reset value="Clear"></h2>
+<p><input type=checkbox name="selectBox">Activate field selection.
+</form>
+</body>
+</html>

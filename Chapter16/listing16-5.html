@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Navigating Siblings</title>
+
+<script type"text/javascript">
+
+var currentNode;
+
+//Get the next node in the tree
+function next()
+{
+  //See if current node has a sibling node.
+  if(currentNode.nextSibling)
+  {
+    currentNode=currentNode.nextSibling;
+    displayNode(); //Display information about current node
+  }
+  else
+  {
+    alert("This is the last sibling");
+  }
+}
+
+function previous()
+{
+  //See if current node has a sibling node.
+  if(currentNode.previousSibling)
+  {
+    currentNode=currentNode.previousSibling;
+    displayNode(); //Display information about current node
+  }
+  else
+  {
+    alert("This is the first sibling.");
+  }
+}
+
+//Display the tag name and type and any text that it contains
+function displayNode()
+{
+  document.displayForm.NameTextBox.value=currentNode.nodeName;
+  document.displayForm.TypeTextBox.value=currentNode.nodeType;
+  document.displayForm.TextTextBox.value=currentNode.innerHTML;
+}
+</script>
+</head>
+
+
+<body>
+<h1 id="h1Node">Navigating Siblings</h1>
+
+This example demonstrates how to navigate through sibling 
+nodes using JavaScript. The starting node is the header tag above.
+
+<form name="displayForm">
+Name: <input type="text" name="NameTextBox"><br />
+Type: <input type="text" name="TypeTextBox"><br />
+Text: <input type="text" name="TextTextBox"><br />
+<input type="button" value="PREVIOUS" onclick="previous()">
+<input type="button" value="NEXT" onclick="next()">
+</form>
+
+<script type="text/javascript">
+//Set current node to the h1 node and display the nodes attributes
+currentNode = document.getElementById("h1Node");
+displayNode();
+</script>
+
+</body>
+</html>

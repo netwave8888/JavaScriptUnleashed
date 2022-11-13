@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Department Budget</title>
+
+<script type="text/javascript">
+function calcRemainder(formObj)
+{
+     var calcBudget = parseInt(formObj.salaries.value,10)
+          + parseInt(formObj.expenses.value,10)
+          + parseInt(formObj.capital.value,10);
+     var totalBudget = parseInt(formObj.totalBudget.value);
+     var unalloc = totalBudget - calcBudget;
+     formObj.remainder.value = unalloc;
+}
+
+function validateBudget(formObj)
+{
+     calcRemainder(formObj);
+     var unalloc = formObj.remainder.value;
+     if (unalloc != 0) 
+     {
+          alert("Error: Total budget is not equal "
+               + "to sum of allocations.");
+          return false;
+     }
+     return true;
+}
+</script>
+</head>
+
+<body>
+<form name="myform" method="post" action="actionURL"
+     onSubmit="return validateBudget(myform)">
+<h2>Department Budget</h2>
+
+<pre>
+Total Budget (000's dollars):      <input type="text"
+     name="totalBudget" value="0"
+     onChange="calcRemainder(myform)">
+Salaries (000's dollars):          <input type="text"
+     name="salaries" value="0" onchange="calcRemainder(myform)">
+Expenses (000's dollars):          <input type="text"
+     name="expenses" value="0" onchange="calcRemainder(myform)">
+Capital Equipment (000's dollars): <input type="text"
+     name="capital" value="0" onchange="calcRemainder(myform)">
+<em>Unallocated Remainder:<em>             <input type="text"
+     name="remainder" value="0">
+</pre>
+
+<input type="submit" name="submit" value="Submit">
+</form>
+</body>
+</html>

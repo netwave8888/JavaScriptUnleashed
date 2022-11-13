@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!--
+    // Global variable modified in any function
+    var numberA;
+
+    // Global variable only modified in main script 
+    var numberB;
+
+    function doubleGlobalVar()
+    {
+      // This will change the value of the global variable.
+      numberA *= 2;
+    }
+
+    function tripleLocalVar() 
+    {
+      // This uses the same name as the global variable, but is considered
+      // different by JavaScript.
+      var numberA = 1; 
+      numberA *= 3;
+    }
+
+    function doublePassedVar(numberB) 
+    {
+      // I purposely gave the argument variable the same name as the
+      // variable being passed. This shows that JavaScript considers them
+      // to be different.
+      numberB *= 2;
+    }
+  //-->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    numberA = 1;
+    document.writeln("Initial value of numberA: " + numberA + "<br />");
+    doubleGlobalVar();
+    tripleLocalVar();
+    document.writeln("Final value of numberA: " + numberA + "<br />");
+    numberB = 1;
+    document.writeln("Initial value of numberB: " + numberB + "<br />");
+    doublePassedVar(numberB);
+    document.writeln("Final value of numberB: " + numberB + "<br />");
+  // -->
+  </script>
+</body>
+</html>
+
+

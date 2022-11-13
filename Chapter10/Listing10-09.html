@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    window.defaultStatus = "See, we changed it!!!";
+
+    function changeStatus(direction) {
+      if(direction == "over"){
+        window.status = "Click me to go to Sams";
+      }else if(direction == "out"){
+        window.status = window.defaultStatus;
+      }
+    }
+
+    function changeDefaultStatus() {
+      window.status = window.document.statusForm.messageList.options[window.document.statusForm.messageList.selectedIndex].text;
+    }
+
+  </script>
+</head>
+<body>
+<p>Let's go to the
+  <a href="http://www.samspublishing.com"
+     onmouseover="changeStatus('over');return true"
+     onmouseout="changeStatus('out');return true">Sams</a>
+  home page.
+</p>
+<form action="null" method="post" name="statusForm">
+  <p>To change the  status bar message, select a message from the list
+     below and click the Change button. Roll back over the link to see
+     it change back to the default.
+    <br />
+    <select name="messageList" size="1">
+      <option selected="selected">Welcome to the large URL page.</option>
+      <option>En route to Sams</option>
+      <option>This page intentionally left (nearly) blank.</option>
+      <option>An exciting example of changing status bar text.</option>
+    </select>
+    <input type="button" value="Change" name="Change"
+           onclick="changeDefaultStatus();return true" />
+  </p>
+</form>
+</body>
+</html>

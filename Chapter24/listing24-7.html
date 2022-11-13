@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>String Validation</title>
+<script type="text/javascript">
+function isString(textObj) 
+{
+   var newValue = textObj.value;
+   var newLength = newValue.length;
+   var extraChars=". -,";
+   var search;
+   for(var i = 0; i != newLength; i++) 
+   {
+      aChar = newValue.substring(i,i+1);
+      aChar = aChar.toUpperCase();
+      search = extraChars.indexOf(aChar);
+      if(search == -1 && (aChar < "A" || aChar > "Z") )
+         return false;
+   }
+   return true;
+}
+</script>
+</head>
+
+<body>
+<h1>String Validation</h1>
+<form name="form1">
+<input type="text"
+       size="16"
+       maxlength="16"
+       name="data">
+<input type="button"
+       name="CheckButton"
+       value="Validate"
+       onclick="document.form1.result.value = '' +
+       isString(document.form1.data)">
+<br />
+Result <input type="text"
+              size="16"
+              maxlength="16"
+              name="result">
+</form>
+</body>
+</html>

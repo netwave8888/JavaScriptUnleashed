@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Online Registration</title>
+
+<script type="text/javascript"language="JavaScript">
+     function showHelp() {
+          var helpWin = window.open("", "Help", "height=300,width=400");
+          helpWin.document.write("<body><h2>Help on Registration<\/h2>");
+          helpWin.document.write("1. Please enter your product information into the fields.<br /><br />");
+          helpWin.document.write("2. Click the Register button to submit your form.<br /><br />");
+          helpWin.document.write("3. Click the Clear button to clear the form and start again.<br /><br />");
+          helpWin.document.write("<center><form>");
+          helpWin.document.write("<button type=\"button\" onClick=\"window.close()\">  OK  <\/button>");
+          helpWin.document.write("<\/form><\/center><\/body>");
+          helpWin.document.close();
+     }
+
+     function freeGift() {
+          var freeGiftWin = window.open("", "Gift", "height=150,width=400");
+          freeGiftWin.document.write("<body><h2>Registration Gift<\/h2>");
+          freeGiftWin.document.write("If you register today you will receive a free backpack!");
+          freeGiftWin.document.write("<center><form>");
+          freeGiftWin.document.write("<button type=\"button\" onClick=\"window.close()\">  OK  <\/button>");
+          freeGiftWin.document.write("<\/form><\/center<\/body>");
+          freeGiftWin.document.close();
+     }
+</script>
+</head>
+<body>
+<h1>Online Registration</h1>
+<form method="POST">
+<p>Please provide the following product information:</p>
+<blockquote>
+<pre><em>    Product name </em><input type="text" size="25" maxlength="256"
+name="ProductName">
+<em>           Model </em><input type="text" size="25" maxlength="256"
+name="Product_Model">
+<em>  Version number </em><input type="text" size="25" maxlength="256"
+name="Product_VersionNumber">
+<em>Operating system </em><input type="text" size="25" maxlength="256"
+name="Product_OperatingSystem">
+<em>   Serial number </em><input type="text" size="25" maxlength="256"
+name="Product_SerialNumber">
+</pre>
+</blockquote>
+<p><input type="submit" value="Register">
+<input type="reset" value="Clear">
+<button type="button" onClick="showHelp()">Help</button>
+<img src="freeGift.gif" onClick="freeGift()"></p>
+</form>
+</body>
+</html>
+

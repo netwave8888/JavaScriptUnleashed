@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+<body>
+  <script type="text/javascript">
+  <!--
+    // Write the header part to the page
+    document.write("Numbers 0 through 99:");
+    document.write('<hr size="0" width="50%" align="left">');
+
+    for (var i = 0; i < 100; ++i) 
+    {
+      // Put a break in between every 10th number
+      if(i%10 == 0) 
+      {
+        document.write('<br>');
+      }
+
+      // Write the number to the page
+      document.write(i + ",");
+    }
+
+    // Finish up with the last number
+    document.write("<br><br>After completing the loop, i equals : " + i);
+
+  // -->
+  </script>
+</body>
+</html>

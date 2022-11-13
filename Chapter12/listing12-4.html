@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Online Registration</title>
+<script type="text/javascript" language="JavaScript">
+     function findBrowser() {
+          document.form1.Browser.value = navigator.appName;
+     }
+</script>
+</head>
+
+<body onLoad="findBrowser()" >
+<form name="form1" method="POST">
+<h2>Online Registration</h2>
+<p>Username:<br>
+<input type=text size=25 maxlength=256 name="Username"><br>
+Browser used:<br>
+<input type=text size=25 maxlength=256 name="Browser"><br>
+Email address:<strong> <br>
+</strong><input type=text size=25 maxlength=256 name="EmailAddress"></p>
+<h2><input type=submit value="Register"> <input type=reset value="Clear"></h2>
+</form>
+</body>
+</html>

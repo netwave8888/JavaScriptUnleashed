@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+
+    function showWindow(){
+      var txt = document.form1.stringField.value
+
+      if (document.form1.hypertext[0].checked){
+        txt = txt.link(document.form1.jumptoField.value);
+      }else{
+        if (document.form1.hypertext[1].checked){
+          txt = txt.anchor(document.form1.jumptoField.value);
+        }
+      }
+
+      // Create and open a window to write the results
+      objWindow = window.open("", "","width=600,height=300");
+      objWindow.document.write(txt);
+      objWindow.document.close();
+    }
+
+  </script>
+</head>
+<body>
+  <h1>
+    String Object Hypertext Formatting
+  </h1>
+  <hr />
+  <form method="post" name="form1" action="null">
+    <p>
+      Text:
+      <input type="text" size="20" maxlength="256" name="stringField" />
+      <input type="radio" name="hypertext" value="Link" checked="checked" />
+      Link:
+      <input type="radio" name="hypertext" value="Anchor" />
+      Anchor:
+    </p>
+    <p>
+      Jump To:
+      <input type="text" size="30" maxlength="256" name="jumptoField" />
+    </p>
+    <input type="button" name="Show" value="Show" onclick="showWindow()" />
+  </form>
+</body>
+</html>

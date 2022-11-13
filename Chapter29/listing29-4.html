@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Matching the Backspace Character</title>
+</head>
+
+<body>
+<h2>Matching the Backspace Character</h2>
+
+Pattern = [\b]\d <br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /[\b]\d/;
+
+//Test for "\b5"
+document.write("Test for String \"\\b5\" returns ");
+document.write(regExpObj.test("\b5"));
+document.write("<br /><br />");
+
+//Test for "5\b"
+document.write("Test for String \"5\\b\" returns ");
+document.write(regExpObj.test("5\b"));
+document.write("<br /><br />");
+
+var str = "5\b";
+document.write(str.search(regExpObj));
+</script>
+
+</body>
+</html>

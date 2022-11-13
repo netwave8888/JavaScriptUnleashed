@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Email Address Format Validation</title>
+<script type="text/javascript">
+function validateEmail(emailAddress)
+{
+  //Create a regular expression pattern for verifing email address
+  var regExpObj = /^\w{1,}@\w{1,}\.(com|net)/;
+
+  if(regExpObj.exec(emailAddress) == null)
+  {
+    alert(emailAddress + " is not a valid email address format!");
+  }
+  else
+  {
+    alert("Future specials and news will be sent to this email address.");
+  }
+}
+</script>
+</head>
+
+<body style="text-align:center">
+<h2>Email Address Format Validation</h2>
+
+Please provide us with your email address so we can notify you of
+special deals and news in the future.
+
+<form name="form1">
+Email: <input type="text"
+                     size="25"
+                     name="email">
+<br /><br />
+<input type="button"
+       value="Submit"
+       onClick="validateEmail(email.value)">
+</form>
+</body>
+</html>

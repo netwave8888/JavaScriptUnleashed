@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Using the book object</title>
+  <script type="text/javascript">
+  function book(title, author, ISBN, subject, rating) 
+  {
+    this.title = title;
+    this.author = author;
+    this.ISBN = ISBN;
+    this.subject = subject;
+    this.rating = rating;
+    this.show = show;
+  }
+
+  function show() 
+  {
+    objWindow = window.open("", "", "width=600,height=300");
+    objWindow.document.write("<html><body>");
+    objWindow.document.write("<h1>Object Description<\/h1>");
+    objWindow.document.write("Book Title: " + this.title + "<br \/>");
+    objWindow.document.write("Author: " + this.author + "<br \/>");
+    objWindow.document.write("ISBN: " + this.ISBN + "<br \/>");
+    objWindow.document.write("Subject: " + this.subject + "<br \/>");
+    objWindow.document.write("Allen's Rating: " + this.rating + "<br \/>");
+    objWindow.document.write("<\/body><\/html>");
+    objWindow.document.close();
+  }  </script>
+</head>
+<body>
+  <script type="text/javascript">    // Book object defined here
+    dbBook = new book("Cost of Discipleship", "Dietrich Bonhoeffer",
+                      "1-57521-118-1",  "Grace", 5);
+    dbBook.show();
+  </script>
+</body>
+</html>

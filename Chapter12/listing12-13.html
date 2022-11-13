@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Hidden Var Test</title>
+<script type="text/javascript" language="JavaScript">
+
+     var holder = "";
+     var holder2 = "";
+
+     function postData(value) {
+          holder2 = holder;
+          holder = value;
+     }
+
+     function resetValue() {
+          var len = document.form1.ctyList.length;
+          for (var i=0; i<len; i++) {
+               if (document.form1.ctyList[i].value == holder2) {
+                    document.form1.ctyList[i].checked = "1";
+                    break; 
+               }
+          }
+     }
+
+</script>
+</head>
+
+<body>
+<h1>I remember</h1>
+<form name="form1" method="POST">
+<p><input type=radio name="ctyList" value="Argentina"
+onClick="postData(this.value)">Argentina</p>
+<p><input type=radio name="ctyList" value="Burkina Faso"
+onClick="postData(this.value)">Burkina Faso</p>
+<p><input type=radio name="ctyList" value="Pakistan"
+onClick="postData(this.value)">Pakistan</p>
+<p><input type=radio name="ctyList" value="Switzerland"
+onClick="postData(this.value)">Switzerland</p>
+<p><input type=radio name="ctyList" value="United Kingdom"
+onClick="postData(this.value)">United Kingdom</p>
+<p><input type=radio name="ctyList" value="United States of America"
+onClick="postData(this.value)">United States of America</p>
+<p><input type=radio name="ctyList" value="Zambia"
+onClick="postData(this.value)">Zambia</p>
+<p><input type=radio name="ctyList" value="Zimbabwe"
+onClick="postData(this.value)">Zimbabwe</p>
+<p><input type=button name="UndoLast" value="Undo Last"
+onClick="resetValue()"></p>
+</form>
+</body>
+</html>

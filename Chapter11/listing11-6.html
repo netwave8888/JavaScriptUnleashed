@@ -1,0 +1,35 @@
+<html>
+<html>
+<head>
+  <base target="middle">
+  <script type="text/javascript">
+  <!--
+    function getLinkInfo() {
+      var len = parent.bFrame.document.links.length;
+
+      with(parent.mFrame.document){
+        open();
+        write("<h3>The " + len);
+        write(" links of the bottom frame include:</h3><p>");
+
+        for(var i = 0; i < len; i++){
+          write((i + 1) + ". ");
+          write(parent.bFrame.document.links[i].href + "<br>");
+        }
+        close()
+      }
+    }
+  //-->
+  </script>
+</head>
+<body bgcolor="red">
+  <form>
+    <div align="center">
+      <input type="button" 
+             name="Extract" 
+             value="Extract Link Information"
+             onclick="getLinkInfo()">
+    </div>
+  </form>
+</body>
+</html> 

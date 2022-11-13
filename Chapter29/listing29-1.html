@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Match Any Word or Non-Word Character</title>
+</head>
+
+<body>
+<h2>Match Any Word or Non-Word Character</h2>
+
+Pattern = \w\W <br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /\w\W/;
+
+//Test for "b?"
+document.write("Test for String \"b?\" returns ");
+document.write(regExpObj.test("b?"));
+document.write("<br /><br />");
+
+//Test for "?b"
+document.write("Test for String \"b?\" returns ");
+document.write(regExpObj.test("?b"));
+document.write("<br /><br />");
+</script>
+
+</body>
+</html>

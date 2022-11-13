@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+</head>
+<body>
+  <script type="text/javascript">
+  // Declare variables
+  var pos = 0;
+  var num = -1;
+  var i = -1;
+     var graf = "While nearly everyone agrees on the principle of reuse,"
+                + "the priority we give it varies wildly.";
+
+  // Search the string and counts the number of e's
+  while (pos != -1) {
+    pos = graf.indexOf("e", i + 1);
+    num += 1;
+    i = pos;
+  }
+
+  // Write the response to the page
+  document.write(graf)
+  document.write("<hr size='1'>")
+  document.write("There were " + num + " e's in that paragraph.");
+  document.close();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+    function displayWindowInfo(){
+      var winInfo = new String()
+      winInfo = "";
+
+      winInfo += "Window object name: " + window.window.name + "\n"
+      winInfo += "URL: " + window.location + "\n"
+      alert(winInfo)
+    }
+  </script>
+</head>
+<body>
+<h1>Frame 2</h1>
+<form method="post" action="null">
+  <input type="button" value="Display Information" onclick="displayWindowInfo()" />
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Match Either String</title>
+</head>
+
+<body>
+<h2>Match Either String</h2>
+
+Pattern = cat|dog<br /><br />
+
+<script type="text/javascript">
+
+var regExpObj = /cat|dog/;
+
+//Test for "A hungry dog"
+document.write("Test for String \"A hungry dog\" returns ");
+document.write(regExpObj.test("A hungry dog"));
+document.write("<br /><br />");
+
+//Test for "A hungry cat"
+document.write("Test for String \"A hungry cat\" returns ");
+document.write(regExpObj.test("A hungry cat"));
+document.write("<br /><br />");
+
+//Test for "A hungry cow"
+document.write("Test for String \"A hungry cow\" returns ");
+document.write(regExpObj.test("A hungry cow"));
+document.write("<br /><br />");
+
+</script>
+
+</body>
+</html>

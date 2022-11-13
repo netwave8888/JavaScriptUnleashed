@@ -1,0 +1,77 @@
+<html>
+<head>
+  <title>Using the book object</title>
+  <script type="text/javascript">
+  function book(title, author, ISBN, subject, rating) 
+  {
+    this.title = title;
+    this.author = author;
+    this.ISBN = ISBN;
+    this.subject = subject;
+    this.rating = rating;
+    this.show = show;
+  }
+
+  function show() 
+  {
+    objWindow = window.open("", "", "width=600,height=300");
+    objWindow.document.write("<html><body>");
+    objWindow.document.write("<h1>Object Description<\/h1>");
+    objWindow.document.write("Book Title: " + this.title + "<br \/>");
+    objWindow.document.write("Author: " + this.author + "<br \/>");
+    objWindow.document.write("ISBN: " + this.ISBN + "<br \/>");
+    objWindow.document.write("Subject: " + this.subject + "<br \/>");
+    objWindow.document.write("Allen's Rating: " + this.rating + "<br \/>");
+    objWindow.document.write("<\/body><\/html>");
+    objWindow.document.close();
+  }
+
+  function assignRating() 
+  {
+    selectedBook = document.form1.bookList.options[document.form1.bookList.selectedIndex].value;
+    selectedBook = eval(selectedBook);
+    selectedBook.rating = document.form1.rating.options[document.form1.rating.selectedIndex].text;
+  }
+
+  function showBook() 
+  {
+    selectedBook = document.form1.bookList.options[document.form1.bookList.selectedIndex].value;
+    selectedBook = eval(selectedBook);
+    selectedBook.show();
+  }
+
+  // Execute on loading
+  dbBook = new book("Cost of Discipleship", "Dietrich Bonhoeffer", "1-57521-118-1", "Grace", 5);
+  fkBook = new book("The Once and Future King", "T.H. White", "1-57521-112-1", "Camelot", 5);
+  olBook = new book("On Liberty", "John Stuart Mill", "1-53221-118-1", "Political Philosophy", 4);
+  iaBook = new book("Icarus Agenda", "Robert Ludlum", "1-53221-118-1", "Political Thriller", 3);
+  cnBook = new book("Chronicles of Narnia", "C.S. Lewis", "1-53231-128-1", "Children's Fiction", 5);
+  </script>
+</head>
+<body>
+  <h1>Book Objects</h1>
+  <form name="form1">
+    Select a book:
+      <select name="bookList" size="1">
+        <option value="dbBook">Cost of Discipleship</option>
+        <option value="fkBook">The Once and Future King</option>
+        <option value="olBook">On Liberty</option>
+        <option value="iaBook">Icarus Agenda</option>
+        <option value="cnBook">Chronicles of Narnia</option>
+      </select>
+    <br />Assign a rating:
+      <select name="rating" size="1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    <br />Click to assign:
+      <input type="button" name="Assign" value="Assign" onClick="assignRating()">
+    <br />Click to show:
+      <input type="button" name="Show" value="Show" onClick="showBook()">
+  </form>
+</body>
+</html>
+

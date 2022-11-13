@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!-- 
+    function getBinary(anInteger) 
+    {
+      var result = "";
+      var shortResult = "";
+      for(var i=1; i <= 32; i++) 
+      {
+        if(anInteger & 1 == 1) 
+        {
+          result = "1" + result;
+          shortResult = result;
+        } 
+        else 
+        {
+          result =  "0" + result;
+        }
+        anInteger = anInteger >> 1;
+      }
+      return(shortResult);
+    }
+  // -->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!-- 
+    var binaryString = "";
+
+    // Define an x variable
+    x = 9;
+    binaryString = getBinary(x);
+
+    // Write results to the page
+    document.write("The number " + x + " in binary form is : ");
+    document.writeln(binaryString + "<br>");
+    
+    // Redefine x variable
+    x = 255;
+    binaryString = getBinary(x);
+
+    // Write results to the page
+    document.write("The number " + x + " in binary form is : ");
+    document.writeln(binaryString + "<br>");
+    document.writeln("The variable x is still equal to : " + x);
+  // -->
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    // Declare variables
+    var highestNum = 0;
+    var n = 175;         // Sample value
+
+    for(var i = 0; i < n; ++i)
+    {
+      document.write(i + "<br>");
+      
+      //Break out of the for loop all together if n is less than 0.
+      if(n < 0)
+      {
+        document.write("n cannot be negative.");
+        break;
+      }
+
+      //Go to the next loop iteration if i squared is less than or equal to n
+      if (i * i <= n) 
+      {
+        highestNum = i;
+        continue;
+      }
+      document.write("<br>Finished!");
+
+      //If not caught by one of the if statements then break out of the for loop.
+      break;
+    }
+    document.write("<br>The integer less than or equal to the Square Root");
+    document.write(" of " + n + " = " + highestNum);
+  // -->
+  </script>
+</body>
+</html>

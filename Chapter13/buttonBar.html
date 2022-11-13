@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Slide Show Demo Image Map</title>
+<script type="text/javascript" language="JavaScript">
+function move(action){
+  var slideName = top.frames[0].slideName; // root file name for series of slides
+  var slideNumber = top.frames[0].slideNumber; // sequential slide number
+  var totalNumSlides = top.frames[0].totalNumSlides; // number of slides
+  if( action == "f" )
+    if(slideNumber == totalNumSlides)
+      slideNumber = 0;
+  if( action == "r" )
+    if(slideNumber == 1)
+      slideNumber = totalNumSlides - 1;
+     else
+      slideNumber = slideNumber - 2;
+  slideNumber = slideNumber + 1;
+  slideName += slideNumber;
+  slideName += ".html";
+  top.frames[0].location.href = slideName;
+ }
+
+</script>
+</head>
+<body bgcolor="000000">
+<center>
+<map name="map1">
+  <area coords="1,1,100,100" href='javascript:move("r")'
+   onMouseOver='window.status="Cycle reverse through slide show";
+   return true'>
+  <area coords="101,1,200,100" href="slideShowHome.html" target="_top"
+    onMouseOver='window.status="Quit Slide Show and Return to Home Page";
+    return true'>
+  <area coords="201,1,300,100" href='javascript:move("f")'
+    onMouseOver='window.status="Cycle forward through slide show";
+    return true'>
+</map>
+<img src="buttons.gif" width=300 height=100 usemap="#map1">
+</center>
+</body>
+</html>

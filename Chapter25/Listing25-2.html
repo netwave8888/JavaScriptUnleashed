@@ -1,0 +1,12 @@
+function GetCookieCount (name) {
+  var result = 0;
+  var myCookie = " " + document.cookie + ";";
+  var searchName = " " + name + "=";
+  var nameLength = searchName.length;
+  var startOfCookie = myCookie.indexOf(searchName);
+  while (startOfCookie != -1) {
+    result += 1;
+    startOfCookie = myCookie.indexOf(searchName, startOfCookie + nameLength);
+  }
+  return result;
+}

@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>GUI Example</title>
+  <script type="text/javascript">
+  <!--
+
+    // search function not yet implemented
+    // here: create display of result list
+    function fsearch(aForm){
+      alert ("Sorry, search function not yet implemented");
+    }
+
+    // display of options not yet implemented
+    function foptions(aForm){
+      alert ("Sorry, no options available");
+    }
+    //-->
+  </script>
+</head>
+<body>
+  <h3>
+    My search form
+  </h3>
+  <hr>
+  <form>
+    Find:
+    <input type="text" name="tfield" size="40">
+    <br>
+    <input type="radio" name="search">
+    Simple Search
+    <br>
+    <input type="radio" name="search">
+    Extended Search
+    <br>
+    <input type="button" name="bsearch" value="Search"
+      onclick="fsearch(this.form)">
+    <input type="button" name="boptions" value="More options"
+      onclick="foptions(this.form)">
+  </form>
+</body>
+</html>

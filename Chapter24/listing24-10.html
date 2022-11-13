@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Credit Card Validation</title>
+<script type="text/javascript">
+function isCreditCard(textObj) {
+ /*
+  *  This function validates a credit card entry.
+  *  If the checksum is ok, the function returns true.
+  */
+   var ccNum;
+   var odd = 1;
+   var even = 2;
+   var calcCard = 0;
+   var calcs = 0;
+   var ccNum2 = "";
+   var aChar = '';
+   var cc;
+   var r;
+
+   ccNum = textObj.value;
+   for(var i = 0; i != ccNum.length; i++) 
+   {
+      aChar = ccNum.substring(i,i+1);
+      if(aChar == '-') {
+         continue;
+      }
+      ccNum2 = ccNum2 + aChar;
+   }
+
+   cc = parseInt(ccNum2);
+   if(cc == 0) {
+      return false;
+   }
+   r = ccNum.length / 2;
+   if(ccNum.length - (parseInt(r)*2) == 0) {
+      odd = 2;
+      even = 1;
+   }
+
+   for(var x = ccNum.length - 1; x > 0; x--) 
+   {
+      r = x / 2;
+      if(r < 1) {
+         r++;
+      }
+      if(x - (parseInt(r) * 2) != 0) {
+         calcs = (parseInt(ccNum.charAt(x - 1))) * odd;
+      }
+      else {
+         calcs = (parseInt(ccNum.charAt(x - 1))) * even;
+      }
+      if(calcs >= 10) {
+         calcs = calcs - 10 + 1;
+      }
+      calcCard = calcCard + calcs;
+   }
+
+   calcs = 10 - (calcCard % 10);
+   if(calcs == 10) {
+      calcs = 0;
+   }
+
+   if(calcs == (parseInt(ccNum.charAt(ccNum.length - 1)))) {
+      return true;
+   }
+   else {
+      return false;
+   }
+}
+</script>
+</head>
+
+<body>
+<h1>Credit Card Validation</h1>
+<form name="form1">
+<input type="text"
+       size="16"
+       maxlength="16"
+       name="data">
+<input type="button"
+       name="CheckButton"
+       value="Validate"
+       onclick="document.form1.result.value = '' +
+                isCreditCard(document.form1.data)">
+<br />
+Result <input type="text"
+              size="16"
+              maxlength="16"
+              name="result">
+</form>
+</body>
+</html>

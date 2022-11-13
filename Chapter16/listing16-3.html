@@ -1,0 +1,28 @@
+<html>
+<head><title>Accessing an Attribute of an Element</title></head>
+<body>
+
+<form>
+First Name<input type="text" id="firstName"><br />
+Last Name<input type="text" id="lastName"><br />
+<input type="submit">
+</form>
+
+<h2>Type Attribute of Input Tags</h2>
+<script type="text/javascript">
+
+  //Access the firstName element
+  var theElement = document.getElementById("firstName");
+  document.write("firstName type=" + 
+                 theElement.getAttribute("type") + 
+                 "<br \/>");
+
+  //Access the lastName element
+  theElement = document.getElementById("lastName");
+  document.write("lastName type=" + 
+                 theElement.getAttribute("type") + 
+                 "<br \/>");
+
+</script>
+</body>
+</html>

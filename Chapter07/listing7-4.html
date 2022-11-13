@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+  <!--
+    // userName is optional
+    function welcomeMessage(userName) 
+    {
+      if (userName != null) 
+      {
+        document.writeln("\"Hello again, " + userName + ".\"");
+      }
+      else
+      {
+        document.writeln("\"Welcome to our Web site!\"");
+        document.write("\nIf a value is not passed to this ");
+        document.writeln("function, displaying the");
+        document.write("variable \"userName\" would show : ");
+        document.writeln(userName);
+      }
+    }
+  // -->
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+    document.writeln("First call to welcomeMessage(),\n");
+    welcomeMessage("Mr. President");
+    document.writeln("\nSecond call to welcomeMessage(),\n");
+    welcomeMessage();
+  // -->
+  </script>
+</body>
+</html>

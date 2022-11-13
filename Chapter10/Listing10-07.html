@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>JavaScript Unleashed</title>
+  <script type="text/javascript">
+    function showBox() {
+      userText = prompt("Enter the text for your personalized browser " +
+                        "window.","My own browser text");
+      if (userText != null) {
+        userWindow = window.open("", "userTextWindow", "toolbar=0,width=200,height=200");
+        userWindow.document.write(userText);
+        userWindow.document.close();
+      }
+    }
+  </script>
+</head>
+<body>
+<form action="null" method="post">
+  <p>Create Your Own HTML Page
+    <input type="button" value="Go!"
+           onclick="showBox()" />
+  </p>
+</form>
+</body>
+</html>

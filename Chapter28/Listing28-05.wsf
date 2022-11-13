@@ -1,0 +1,35 @@
+<job>
+  <script language="JScript">
+
+    // Create a WshController object.
+    WshCtrlObj = WScript.CreateObject("WSHController");
+
+    // Create a WshRemote object.
+    remoteScript = WshCtrlObj.CreateScript("seturl.wsf", "\\blue");
+
+    // Catch events.
+    WScript.ConnectObject(RemoteScript, "remote_");
+
+    // Start the script.
+    RemoteScript.Execute();
+
+    // Print the current status.
+    WScript.Echo("The current status of the remote script is: " + RemoteScript.Status);
+
+    while (remoteScript.Status !=5) {
+      WScript.Sleep(100);
+    }
+    
+    WScript.DisconnectObject(RemoteScript);
+
+    // Catch errors.
+    function remote_Error(){
+      var myError = RemoteScript.Error;
+      var errorString  = "Error (" + myError.Line + "): ";
+      errorString += myError.Description + "\n";
+      WScript.Echo(errorString);
+      WScript.Quit(-1);
+    }
+
+  </script>
+</job>
